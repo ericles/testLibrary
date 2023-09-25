@@ -1,9 +1,9 @@
 {
     "compilerOptions": {
-      "target": "ES6", // Or your desired target version
-      "module": "CommonJS", // Or your desired module system
-      "outDir": "./dist", // Or your preferred output directory
-      "rootDir": "./", // Assuming TypeScript files are in the root directory
+      "target": "ES6", // target version
+      "module": "CommonJS", //  module system
+      "outDir": "./dist", // O output directory
+      "rootDir": "./", // TypeScript files are in the root directory
       "strict": true // Enable strict type-checking
     },
     "include": ["**/*.ts"]
