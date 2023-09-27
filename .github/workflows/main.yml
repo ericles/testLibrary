@@ -3,7 +3,7 @@ name: Unified LMS Test CI
 on:
   push:
     branches:
-      - '*'
+      - '**'
       - '!main'
 
 jobs:
