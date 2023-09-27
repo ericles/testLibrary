@@ -3,7 +3,7 @@ name: Jest CI
 on:
   push:
     branches:
-      - ciTesting
+      - all
 
 jobs:
   build:
