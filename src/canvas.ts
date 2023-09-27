@@ -1,5 +1,5 @@
 export function getStudentList(){
-    
+
 }
 
 export function getStudentById(){
@@ -14,8 +14,18 @@ export function getTeacherById(){
 
 }
 
-export function getCourseList(){
+export function getCourseList(token: string){
+    const header = new Headers();
+    header.append('authorization', 'Bearer ' + token);
 
+    const options: RequestInit = {
+        method: 'GET',
+        headers: header
+    };
+
+    const data = fetch('https://canvas.instructure.com/api/v1/courses', options);
+
+    return data;
 }
 
 export function getCourseById(){

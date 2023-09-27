@@ -19,8 +19,18 @@ export function getTeacherById(){
 
 }
 
-export function getCourseList(){
+export function getCourseList(lms: string, token: string){
+    let data;
 
+    switch(lms){
+        case 'canvas':
+            data = canvas.getCourseList(token);
+            break;
+        default:
+            break;
+    }
+
+    return data;
 }
 
 export function getCourseById(){
