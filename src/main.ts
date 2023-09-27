@@ -1,5 +1,7 @@
-export function getStudentList(){
+import * as canvas from "./canvas";
 
+export function getStudentList(){
+    return canvas.getStudentList();
 }
 
 export function getStudentById(){
