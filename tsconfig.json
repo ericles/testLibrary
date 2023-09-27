@@ -1,11 +1,11 @@
 {
-    "compilerOptions": {
-      "target": "ES6", // target version
-      "module": "CommonJS", //  module system
-      "outDir": "./dist", // O output directory
-      "rootDir": "./", // TypeScript files are in the root directory
-      "strict": true // Enable strict type-checking
-    },
-    "include": ["**/*.ts"]
-  }
+  "compilerOptions": {
+    "target": "ES6", // target version
+    "module": "CommonJS", //  module system
+    "outDir": "./dist", // O output directory
+    "rootDir": "./", // TypeScript files are in the root directory
+    "strict": true // Enable strict type-checking
+  },
+  "include": ["**/*.ts"]
+}
   
