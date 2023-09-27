@@ -1,7 +1,10 @@
 import * as canvas from "./canvas";
+import * as moodle from "./moodle";
+import * as standardiser from "./standardiser";
+
 
 export function getStudentList(){
-    return canvas.getStudentList();
+    
 }
 
 export function getStudentById(){
