@@ -9,7 +9,7 @@ export async function getStudentList(lms: string, courseId: string, token: strin
   switch (lms) {
     case 'canvas':
       try {
-        data = await canvas.getStudentList(token);
+        data = await canvas.getStudentList(token, courseId);
         // console.log("getStudentListCanvas", data);
       } catch (error) {
         console.error("Error in getStudentListCanvas:", error);
@@ -28,7 +28,7 @@ export async function getStudentById(lms: string, courseId: string, token: strin
   switch (lms) {
     case 'canvas':
       try {
-        data = await canvas.getStudentById(token);
+        data = await canvas.getStudentById(token, courseId, studentId);
         // console.log("getStudentByIdCanvas", data);
       } catch (error) {
         console.error("Error in getStudentByIdCanvas:", error);
@@ -47,7 +47,7 @@ export async function getTeacherList(lms: string, courseId: string, token: strin
   switch (lms) {
     case 'canvas':
       try {
-        data = await canvas.getTeacherList(token);
+        data = await canvas.getTeacherList(token, courseId);
         // console.log("getTeacherListCanvas", data);
       } catch (error) {
         console.error("Error in getTeacherListCanvas:", error);
@@ -66,7 +66,7 @@ export async function getTeacherById(lms: string, courseId: string, token: strin
   switch (lms) {
     case 'canvas':
       try {
-        data = await canvas.getTeacherById(token);
+        data = await canvas.getTeacherById(token, courseId, teacherId);
         // console.log("getTeacherByIdCanvas", data);
       } catch (error) {
         console.error("Error in getTeacherByIdCanvas:", error);
