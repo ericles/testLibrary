@@ -1,17 +1,25 @@
-export function getStudentList(){
-
+export function getStudentList(token: string, courseId: string){
+    let url = 'https://canvas.instructure.com/api/v1/courses/'
+    +  courseId + "users?enrollment_type=student";
+  return getData(url, token);
 }
 
-export function getStudentById(){
-
+export function getStudentById(token: string, courseId: string, userId: string){
+    let url = 'https://canvas.instructure.com/api/v1/courses/'
+    +  courseId + "/users/" + userId;
+  return getData(url, token);
 }
 
-export function getTeacherList(){
-
+export function getTeacherList(token: string, courseId: string){
+    let url = 'https://canvas.instructure.com/api/v1/courses/'
+    +  courseId + "users?enrollment_type=teacher";
+  return getData(url, token);
 }
 
-export function getTeacherById(){
-
+export function getTeacherById(token: string, courseId: string, userId: string){
+    let url = 'https://canvas.instructure.com/api/v1/courses/'
+    +  courseId + "/users/" + userId;
+  return getData(url, token);
 }
 
 export async function getCourseList(token: string) {
