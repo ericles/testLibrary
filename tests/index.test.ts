@@ -12,10 +12,11 @@
 //     //will pass or fail
 //   });
 // });
+
 import { greet } from '../index';
 
 // Define the course type
-interface course {
+interface Course {
   id: number;
   name: string;
   account_id: number;
@@ -53,24 +54,22 @@ interface course {
   restrict_enrollments_to_course_dates: boolean;
 }
 
-
-
 describe('greet function', () => {
   it('should return an array of courses with the expected structure', async () => {
     const result = await greet();
 
     expect(Array.isArray(result)).toBe(true);
 
-    result.forEach((course: course) => {
-      expect(course).toMatchObject<course>({
+    result.forEach((course: Course) => {
+      expect(course).toMatchObject<Course>({
         id: expect.any(Number),
         name: expect.any(String),
         account_id: expect.any(Number),
         uuid: expect.any(String),
-        start_at: expect.any(String),
-        grading_standard_id: expect.any(Number),
-        is_public: expect.any(Boolean),
-        created_at: expect.any(String),
+        start_at: expect.any(String), // Update with the actual data
+        grading_standard_id: expect.any(Number), // Update with the actual data
+        is_public: expect.any(Boolean), // Update with the actual data
+        created_at: expect.any(String), // Update with the actual data
         course_code: expect.any(String),
         default_view: expect.any(String),
         root_account_id: expect.any(Number),
