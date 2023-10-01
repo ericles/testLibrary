@@ -14,19 +14,32 @@ export function getTeacherById(){
 
 }
 
-export async function getCourseList(token: string){
+export async function getCourseList(token: string) {
     const header = new Headers();
     header.append('authorization', 'Bearer ' + token);
-
+  
     const options: RequestInit = {
-        method: 'GET',
-        headers: header
+      method: 'GET',
+      headers: header,
     };
-
-    const data = await fetch('https://canvas.instructure.com/api/v1/courses', options);
-
-    return data;
-}
+  
+    try {
+      const response = await fetch('https://canvas.instructure.com/api/v1/courses', options);
+  
+      if (!response.ok) {
+        console.log(response.status);
+        throw new Error(`Request failed with status: ${response.status}`);
+      }
+  
+      const data = await response.json();
+  
+      return data;
+    } catch (error) {
+      console.error('Error fetching course list:', error);
+      throw error; 
+    }
+  }
+  
 
 export function getCourseById(){
 
