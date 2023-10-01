@@ -54,7 +54,7 @@ describe('getCourseList', () => {
     const token = '7~HaO4qXhlfhquEAircCxGAE68LUIho1kmJ3JcYviNHh8j7OjJpdcmwHX6hgJAcA4n'; 
 
     const courses = await getCourseList('canvas', token);
-
+    console.log(courses);
     // Expect that the courses is an array
     expect(Array.isArray(courses)).toBe(true);
 
