@@ -115,6 +115,7 @@ describe('getCourseList', () => {
     courses.forEach((course: course) => {
       expectedKeys.forEach((key) => {
         expect(course).toHaveProperty(key);
+        console.log("Key " +key);
       });
     });
   });
