@@ -27,7 +27,6 @@ export async function getCourseList(token: string) {
       const response = await fetch('https://canvas.instructure.com/api/v1/courses', options);
   
       if (!response.ok) {
-        console.log(response.status);
         throw new Error(`Request failed with status: ${response.status}`);
       }
   
