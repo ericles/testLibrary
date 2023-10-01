@@ -20,27 +20,42 @@ export function getTeacherById(){
 }
 
 export async function getCourseList(lms: string, token: string) {
-    let data;
-  
-    switch (lms) {
-      case 'canvas':
-        try {
-          data = await canvas.getCourseList(token);
-          console.log("GetCourseListCanvas", data);
-        } catch (error) {
-          console.error("Error in GetCourseListCanvas:", error);
-        }
-        break;
-      default:
-        break;
-    }
-  
-    return data;
+  let data;
+
+  switch (lms) {
+    case 'canvas':
+      try {
+        data = await canvas.getCourseList(token);
+        console.log("GetCourseListCanvas", data);
+      } catch (error) {
+        console.error("Error in GetCourseListCanvas:", error);
+      }
+      break;
+    default:
+      break;
   }
+
+  return data;
+}
   
 
-export function getCourseById(){
+export async function getCourseById(lms: string, token: string, courseId: string){
+  let data;
 
+  switch (lms) {
+    case 'canvas':
+      try {
+        data = await canvas.getCourseById(token, courseId);
+        console.log("GetCourseByIdCanvas", data);
+      } catch (error) {
+        console.error("Error in GetCourseByIdCanvas:", error);
+      }
+      break;
+    default:
+      break;
+  }
+
+  return data;
 }
 
 export function getAssignmentList(){
