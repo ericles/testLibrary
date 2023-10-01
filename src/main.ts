@@ -25,6 +25,7 @@ export function getCourseList(lms: string, token: string){
     switch(lms){
         case 'canvas':
             data = canvas.getCourseList(token);
+            console.log("GetCourseListCanvas" + data);
             break;
         default:
             break;
