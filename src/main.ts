@@ -26,7 +26,7 @@ export async function getCourseList(lms: string, token: string) {
     case 'canvas':
       try {
         data = await canvas.getCourseList(token);
-        console.log("GetCourseListCanvas", data);
+        // console.log("GetCourseListCanvas", data);
       } catch (error) {
         console.error("Error in GetCourseListCanvas:", error);
       }
