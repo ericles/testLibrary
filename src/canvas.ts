@@ -33,16 +33,22 @@ export async function getAssignmentList(token: string, courseId: string){
   return getData(url, token);
 }
 
-export function getAssignmentById(){
+export async function getAssignmentById(token: string, courseId: string, assignmentId: string){
+  let url = 'https://canvas.instructure.com/api/v1/courses/' + courseId + '/assignments/' + assignmentId;
 
+  return getData(url, token);
 }
 
-export function getRubricList(){
+export function getRubricList(token: string, courseId: string){
+  let url = 'https://canvas.instructure.com/api/v1/courses/' + courseId + '/rubrics';
 
+  return getData(url, token);
 }
 
-export function getRubricById(){
+export function getRubricById(token: string, courseId: string, rubricId: string){
+  let url = 'https://canvas.instructure.com/api/v1/courses/' + courseId + '/rubrics/' + rubricId;
 
+  return getData(url, token);
 }
 
 async function getData(url: string, token: string){
