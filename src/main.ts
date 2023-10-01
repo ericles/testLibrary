@@ -19,12 +19,12 @@ export function getTeacherById(){
 
 }
 
-export function getCourseList(lms: string, token: string){
+export async function getCourseList(lms: string, token: string){
     let data;
 
     switch(lms){
         case 'canvas':
-            data = canvas.getCourseList(token);
+            data = await canvas.getCourseList(token);
             console.log("GetCourseListCanvas" + data);
             break;
         default:
