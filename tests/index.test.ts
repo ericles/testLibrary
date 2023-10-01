@@ -53,7 +53,6 @@ interface course {
   restrict_enrollments_to_course_dates: boolean;
 }
 
-// Mock the greet function to return an array of course objects with the expected structure
 jest.mock('../index', () => ({
   greet: jest.fn(() => [
     {
@@ -132,6 +131,7 @@ jest.mock('../index', () => ({
     },
   ]),
 }));
+
 
 describe('greet function', () => {
   it('should return an array of courses with the expected structure', async () => {
