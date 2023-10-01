@@ -1,19 +1,3 @@
-// // index.test.ts
-// import { greet } from '../index'; 
-
-// // describe all tests i test suite with string
-// describe('greet function', () => {
-// //it defines an individual test. it takes a description string
-// // and a callback function
-//   it('should return "Hello, World!"', () => {
-//     const result = greet();
-//     //expect().toBe
-//     expect(result).toBe('Hello, World!');
-//     //will pass or fail
-//   });
-// });
-
-
 
 import { greet } from '../index'; 
 import { getCourseList } from '../src/main';
@@ -32,7 +16,7 @@ interface course {
   root_account_id: number;
   enrollment_term_id: number;
   license: string | null;
-  grade_passback_setting: any | null; // You may specify a more specific type here if known
+  grade_passback_setting: any | null; 
   end_at: string | null;
   public_syllabus: boolean;
   public_syllabus_to_auth: boolean;
@@ -50,7 +34,7 @@ interface course {
   template: boolean;
   sis_course_id: string | null;
   integration_id: string | null;
-  enrollments: any[][]; // You may specify a more specific type here if known
+  enrollments: any[][]; 
   hide_final_grades: boolean;
   workflow_state: string;
   restrict_enrollments_to_course_dates: boolean;
@@ -61,20 +45,20 @@ interface course {
 (global.fetch as jest.Mock) = jest.fn(() =>
   Promise.resolve({
     ok: true,
-    json: () => Promise.resolve([]), // Return an empty array for simplicity
+    json: () => Promise.resolve([]), // Return an empty array 
   })
 );
 
 describe('getCourseList', () => {
   it('should return an array of courses with expected keys', async () => {
-    const token = 'your-access-token'; // Replace with a valid access token
+    const token = '7~HaO4qXhlfhquEAircCxGAE68LUIho1kmJ3JcYviNHh8j7OjJpdcmwHX6hgJAcA4n'; 
 
     const courses = await getCourseList('canvas', token);
 
-    // Expect that the courses variable is an array
+    // Expect that the courses is an array
     expect(Array.isArray(courses)).toBe(true);
 
-    // Define an array of expected keys that should be present in each course item
+    // array of expected keys
     const expectedKeys = [
       'id',
       'name',
@@ -111,7 +95,7 @@ describe('getCourseList', () => {
       'restrict_enrollments_to_course_dates',
     ];
 
-    // Iterate through each course and check if it contains all the expected keys
+  
     courses.forEach((course: course) => {
       expectedKeys.forEach((key) => {
         expect(course).toHaveProperty(key);
