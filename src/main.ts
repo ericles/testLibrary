@@ -26,7 +26,7 @@ export async function getCourseList(lms: string, token: string) {
     case 'canvas':
       try {
         data = await canvas.getCourseList(token);
-        console.log("GetCourseListCanvas", data);
+        // console.log("GetCourseListCanvas", data);
       } catch (error) {
         console.error("Error in GetCourseListCanvas:", error);
       }
@@ -46,7 +46,7 @@ export async function getCourseById(lms: string, token: string, courseId: string
     case 'canvas':
       try {
         data = await canvas.getCourseById(token, courseId);
-        console.log("GetCourseByIdCanvas", data);
+        // console.log("GetCourseByIdCanvas", data);
       } catch (error) {
         console.error("Error in GetCourseByIdCanvas:", error);
       }
