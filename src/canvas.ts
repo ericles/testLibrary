@@ -30,6 +30,7 @@ export async function getCourseList(token: string) {
         throw new Error(`Request failed with status: ${response.status}`);
       }
       const data = await response.json();
+      console.log(data);
       return data;
     } catch (error) {
       console.error('Error fetching course list:', error);
