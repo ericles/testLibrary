@@ -4,9 +4,9 @@ const courseId = "7809868";
 
 export async function test() {
   let courseListData = await main.getCourseList('canvas', token);
-  console.log("getCourseList"+courseListData);
+  console.log("getCourseList"+JSON.parse(courseListData));
   let courseIdData = await main.getCourseById('canvas', token, courseId);
-  console.log("getCourseList"+courseIdData);
+  console.log("getCourseById"+JSON.stringify(courseIdData));
   return courseListData;
 }
 
