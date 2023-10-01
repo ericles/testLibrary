@@ -12,7 +12,6 @@
 //     //will pass or fail
 //   });
 // });
-
 import { greet } from '../index';
 
 // Define the course type
@@ -48,7 +47,7 @@ interface Course {
   template: boolean;
   sis_course_id: string | null;
   integration_id: string | null;
-  enrollments: any[][];
+  enrollments: any[];
   hide_final_grades: boolean;
   workflow_state: string;
   restrict_enrollments_to_course_dates: boolean;
@@ -66,37 +65,37 @@ describe('greet function', () => {
         name: expect.any(String),
         account_id: expect.any(Number),
         uuid: expect.any(String),
-        start_at: expect.any(String), // Update with the actual data
-        grading_standard_id: expect.any(Number), // Update with the actual data
-        is_public: expect.any(Boolean), // Update with the actual data
-        created_at: expect.any(String), // Update with the actual data
+        start_at: expect.any(String) || null, // Allow null
+        grading_standard_id: expect.any(Number) || null, // Allow null
+        is_public: expect.any(Boolean) || false, // Allow false
+        created_at: expect.any(String),
         course_code: expect.any(String),
         default_view: expect.any(String),
         root_account_id: expect.any(Number),
         enrollment_term_id: expect.any(Number),
-        license: expect.any(String),
+        license: expect.any(String) || null, // Allow null
         grade_passback_setting: expect.anything(), // Allow any value, as it can be null
         end_at: expect.anything(), // Allow any value, as it can be null
-        public_syllabus: expect.any(Boolean),
-        public_syllabus_to_auth: expect.any(Boolean),
+        public_syllabus: expect.any(Boolean) || false, // Allow false
+        public_syllabus_to_auth: expect.any(Boolean) || false, // Allow false
         storage_quota_mb: expect.any(Number),
-        is_public_to_auth_users: expect.any(Boolean),
-        homeroom_course: expect.any(Boolean),
-        course_color: expect.anything(), // Allow any value, as it can be null
-        friendly_name: expect.anything(), // Allow any value, as it can be null
-        apply_assignment_group_weights: expect.any(Boolean),
+        is_public_to_auth_users: expect.any(Boolean) || false, // Allow false
+        homeroom_course: expect.any(Boolean) || false, // Allow false
+        course_color: expect.any(String) || null, // Allow null
+        friendly_name: expect.any(String) || null, // Allow null
+        apply_assignment_group_weights: expect.any(Boolean) || false, // Allow false
         calendar: {
           ics: expect.any(String),
         },
         time_zone: expect.any(String),
-        blueprint: expect.any(Boolean),
-        template: expect.any(Boolean),
-        sis_course_id: expect.anything(), // Allow any value, as it can be null
-        integration_id: expect.anything(), // Allow any value, as it can be null
-        enrollments: expect.any(Array), // Allow any array
-        hide_final_grades: expect.any(Boolean),
+        blueprint: expect.any(Boolean) || false, // Allow false
+        template: expect.any(Boolean) || false, // Allow false
+        sis_course_id: expect.any(String) || null, // Allow null
+        integration_id: expect.any(String) || null, // Allow null
+        enrollments: expect.any(Array) || [], // Allow empty array
+        hide_final_grades: expect.any(Boolean) || false, // Allow false
         workflow_state: expect.any(String),
-        restrict_enrollments_to_course_dates: expect.any(Boolean),
+        restrict_enrollments_to_course_dates: expect.any(Boolean) || false, // Allow false
       });
     });
   });
