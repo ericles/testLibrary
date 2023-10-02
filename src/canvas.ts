@@ -84,7 +84,7 @@ async function getData(url: string, token: string){
     return data;
   } 
   catch (error) {
-    console.error('Error getting data', error, url);
+    console.error('Error getting data ' + url, error);
     throw error; 
   }
 }
