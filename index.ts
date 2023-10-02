@@ -1,6 +1,11 @@
 import * as main from "./src/main";
 const token= '7~HaO4qXhlfhquEAircCxGAE68LUIho1kmJ3JcYviNHh8j7OjJpdcmwHX6hgJAcA4n';
 const courseId = "7809929";
+const studentId = "109412431";
+const teacherId = "109412162";
+const assignmentId = "40873657";
+const rubricId = "1743469";
+
 
 export async function testCanvas() {
   try {
@@ -12,7 +17,7 @@ export async function testCanvas() {
     console.log("getCourseById CANVAS" + JSON.stringify(courseIdData));
 
     const courseStudentList = await main.getStudentList('canvas', courseId, token);
-    console.log("getStudentList CANVAS" + JSON.stringify(courseStudentList));
+    console.log("START getStudentList CANVAS" + JSON.stringify(courseStudentList) + "END");
 
     const studentByIdData = await main.getStudentById('canvas', courseId, token, 'studentId');
     console.log("getStudentById CANVAS" + JSON.stringify(studentByIdData));
