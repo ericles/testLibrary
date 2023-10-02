@@ -1,14 +1,32 @@
-// index.test.ts
-import { greet } from '../index'; 
+import { testCanvas } from '../index';
+import * as main from "../src/main";
 
-// describe all tests i test suite with string
 describe('greet function', () => {
-//it defines an individual test. it takes a description string
-// and a callback function
-  it('should return "Hello, World!"', () => {
-    const result = greet();
-    //expect().toBe
-    expect(result).toBe('Hello, World!');
-    //will pass or fail
+  it('should return data from the API', async () => {
+    const result = await testCanvas();
+    // console.log(result);
+
+    // Expect that the result is not null or undefined
+    expect(result).toBeDefined();
   });
 });
+
+// describe('test get bla', () => {
+//   it('should return data from the API', async () => {
+//     const result = await testCanvas();
+//     // console.log(result);
+
+//     // Expect that the result is not null or undefined
+//     expect(result).toBeDefined();
+//   });
+// });
+
+// describe('greet function', () => {
+//   it('should return data from the API', async () => {
+//     const result = await testCanvas();
+//     // console.log(result);
+
+//     // Expect that the result is not null or undefined
+//     expect(result).toBeDefined();
+//   });
+// });
