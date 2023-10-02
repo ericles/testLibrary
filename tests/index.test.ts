@@ -32,7 +32,7 @@ describe('getStudentList', () => {
     expect(firstStudent).toHaveProperty('short_name', 'Student');
     expect(firstStudent).toHaveProperty('sis_user_id', null);
     expect(firstStudent).toHaveProperty('integration_id', null);
-
+    console.log(canvasStudentList); 
   });
   
 
