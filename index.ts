@@ -5,11 +5,14 @@ const studentId = "109412431";
 const teacherId = "109412162";
 const assignmentId = "40873657";
 const rubricId = "1743469";
-
+// consts to test file
 
 export async function testCanvas() {
   try {
     // Call and log the results of Canvas-related methods
+
+
+    //separate to different async functions in test file and get rid of testcanvas
     const courseListData = await main.getCourseList('canvas', token);
     console.log("getCourseList CANVAS" + JSON.stringify(courseListData));
 
@@ -17,7 +20,7 @@ export async function testCanvas() {
     console.log("getCourseById CANVAS" + JSON.stringify(courseIdData));
 
     const courseStudentList = await main.getStudentList('canvas', courseId, token);
-    console.log("START getStudentList CANVAS" + JSON.stringify(courseStudentList) + "END");
+    console.log("getStudentList CANVAS" + JSON.stringify(courseStudentList));
 
     const studentByIdData = await main.getStudentById('canvas', courseId, token, studentId);
     console.log("getStudentById CANVAS" + JSON.stringify(studentByIdData));
