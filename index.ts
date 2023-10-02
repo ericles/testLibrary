@@ -35,7 +35,7 @@ export async function testCanvas() {
     const rubricByIdData = await main.getRubricById('canvas', token, courseId, 'rubricId');
     console.log("getRubricById CANVAS" + JSON.stringify(rubricByIdData));
 
-    return courseListData;
+    return courseStudentList;
   } catch (error) {
     console.error("Error in testCanvas:", error);
     throw error;
