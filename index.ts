@@ -1,6 +1,6 @@
 import * as main from "./src/main";
 const token= '7~HaO4qXhlfhquEAircCxGAE68LUIho1kmJ3JcYviNHh8j7OjJpdcmwHX6hgJAcA4n';
-const courseId = "7809868";
+const courseId = "7809929";
 
 export async function testCanvas() {
   try {
