@@ -42,7 +42,7 @@ export async function getCourseById(token: string, courseId: string){
 
 export async function getAssignmentList(token: string, courseId: string){
   let url = 'https://canvas.instructure.com/api/v1/courses/' + courseId + '/assignments';
-  console.log(url);
+  
   return getData(url, token);
 }
 
@@ -84,7 +84,7 @@ async function getData(url: string, token: string){
     return data;
   } 
   catch (error) {
-    console.error('Error getting data', error);
+    console.error('Error getting data', error, url);
     throw error; 
   }
 }
