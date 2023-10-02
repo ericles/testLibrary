@@ -17,7 +17,7 @@ export function getStudentById(token: string, courseId: string, userId: string){
 
 export function getTeacherList(token: string, courseId: string){
     let url = 'https://canvas.instructure.com/api/v1/courses/'
-    +  courseId + "users?enrollment_type=teacher";
+    +  courseId + "/users?enrollment_type=teacher";
   return getData(url, token);
 }
 
