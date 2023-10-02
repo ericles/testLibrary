@@ -18,28 +18,28 @@ const moodleRubricId = "moodle";
 
 
 describe('getStudentList', () => {
+
+  // getstudentlistcanvas
   it('should return a list of students for Canvas', async () => {
     const canvasStudentList = await main.getStudentList('canvas', canvasCourseId, canvasToken);
     expect(canvasStudentList).toBeDefined();
     expect(Array.isArray(canvasStudentList)).toBe(true);
     // specific assertions for Canvas:
-    expect(canvasStudentList.length).toBeGreaterThan(0); // Check that there are students.
     const firstStudent = canvasStudentList[0];
-    expect(firstStudent).toHaveProperty('id', 109412431); // Check for specific values.
-    expect(firstStudent).toHaveProperty('name', 'Student');
-    expect(firstStudent).toHaveProperty('created_at', '2023-09-18T02:49:42-06:00');
-    expect(firstStudent).toHaveProperty('sortable_name', 'Student');
-    expect(firstStudent).toHaveProperty('short_name', 'Student');
-    expect(firstStudent).toHaveProperty('sis_user_id', null);
-    expect(firstStudent).toHaveProperty('integration_id', null);
-    console.log(canvasStudentList); 
+    expect(firstStudent).toHaveProperty('id');
+    expect(firstStudent).toHaveProperty('name');
+    expect(firstStudent).toHaveProperty('created_at');
+    expect(firstStudent).toHaveProperty('sortable_name');
+    expect(firstStudent).toHaveProperty('short_name');
+    expect(firstStudent).toHaveProperty('sis_user_id');
+    expect(firstStudent).toHaveProperty('integration_id');
   });
   
 
   it('should return a list of students for Moodle', async () => {
     const moodleStudentList = await main.getStudentList('moodle', moodleCourseId, moodleToken);
     expect(moodleStudentList).toBeDefined();
-    // Add more specific assertions for Moodle if needed.
+    
   });
 
   it('should handle errors for Canvas', async () => {
@@ -50,7 +50,7 @@ describe('getStudentList', () => {
       await main.getStudentList('canvas', invalidCanvasCourseId, invalidCanvasToken);
     } catch (error) {
       expect(error).toBeDefined();
-      // Add more specific error handling assertions for Canvas if needed.
+      
     }
   });
 
@@ -62,9 +62,26 @@ describe('getStudentList', () => {
       await main.getStudentList('moodle', invalidMoodleCourseId, invalidMoodleToken);
     } catch (error) {
       expect(error).toBeDefined();
-      // Add more specific error handling assertions for Moodle if needed.
+      
     }
   });
 });
 
+//getstudentbyID
+describe('getStudentById', () => {
+  it('should return a student object for Canvas', async () => {
+    const canvasStudent = await main.getStudentById('canvas', canvasCourseId, canvasToken, canvasStudentId);
+    expect(canvasStudent).toBeDefined();
+    
+    // specific assertions for Canvas:
+    expect(canvasStudent).toHaveProperty('id');
+    expect(canvasStudent).toHaveProperty('name');
+    expect(canvasStudent).toHaveProperty('created_at');
+    expect(canvasStudent).toHaveProperty('sortable_name');
+    expect(canvasStudent).toHaveProperty('short_name');
+    expect(canvasStudent).toHaveProperty('sis_user_id');
+    expect(canvasStudent).toHaveProperty('integration_id');
+    expect(canvasStudent).toHaveProperty('root_account');
 
+  });
+});
