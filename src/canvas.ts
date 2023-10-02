@@ -1,8 +1,13 @@
-export function getStudentList(token: string, courseId: string){
-    let url = 'https://canvas.instructure.com/api/v1/courses/'
-    +  courseId + "users?enrollment_type=student";
-  return getData(url, token);
-}
+// export function getStudentList(token: string, courseId: string){
+//     let url = 'https://canvas.instructure.com/api/v1/courses/'
+//     +  courseId + "users?enrollment_type=student";
+//   return getData(url, token);
+// }
+
+export function getStudentList(token: string, courseId: string) {
+    const url = `https://canvas.instructure.com/api/v1/courses/${courseId}/users?enrollment_type=student`;
+    return getData(url, token);
+  }
 
 export function getStudentById(token: string, courseId: string, userId: string){
     let url = 'https://canvas.instructure.com/api/v1/courses/'
