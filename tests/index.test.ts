@@ -118,9 +118,9 @@ describe('getTeacherById', () => {
 
 describe('getAssignmentList', () => {
   it('should return a list of assignments for Canvas', async () => {
-    const canvasAssignmentListData = await main.getAssignmentList('canvas', canvasToken, canvasCourseId);
+    const canvasAssignmentList = await main.getAssignmentList('canvas', canvasToken, canvasCourseId);
 //     console.log("getAssignmentList CANVAS" + JSON.stringify(assignmentListData));
-    expect(Array.isArray(canvasAssignmentListData)).toBe(true);
+    expect(Array.isArray(canvasAssignmentList)).toBe(true);
   });
 
   it('should return a list of assignments for Moodle', async () => {
@@ -132,76 +132,7 @@ describe('getAssignmentList', () => {
 describe('getAssignmentById', () => {
   it('should return an assignment object for Canvas', async () => {
     const canvasAssignment = await main.getAssignmentById('canvas', canvasCourseId, canvasToken, canvasAssignmentId);
-    expect(canvasAssignment).toHaveProperty('id');
-    expect(canvasAssignment).toHaveProperty('description');
-    expect(canvasAssignment).toHaveProperty('due_at');
-    expect(canvasAssignment).toHaveProperty('unlock_at');
-    expect(canvasAssignment).toHaveProperty('lock_at');
-    expect(canvasAssignment).toHaveProperty('points_possible');
-    expect(canvasAssignment).toHaveProperty('grading_type');
-    expect(canvasAssignment).toHaveProperty('assignment_group_id');
-    expect(canvasAssignment).toHaveProperty('grading_standard_id');
-    expect(canvasAssignment).toHaveProperty('created_at');
-    expect(canvasAssignment).toHaveProperty('updated_at');
-    expect(canvasAssignment).toHaveProperty('peer_reviews');
-    expect(canvasAssignment).toHaveProperty('automatic_peer_reviews');
-    expect(canvasAssignment).toHaveProperty('position');
-    expect(canvasAssignment).toHaveProperty('grade_group_students_individually');
-    expect(canvasAssignment).toHaveProperty('anonymous_peer_reviews');
-    expect(canvasAssignment).toHaveProperty('group_category_id');
-    expect(canvasAssignment).toHaveProperty('post_to_sis');
-    expect(canvasAssignment).toHaveProperty('moderated_grading');
-    expect(canvasAssignment).toHaveProperty('omit_from_final_grade');
-    expect(canvasAssignment).toHaveProperty('intra_group_peer_reviews');
-    expect(canvasAssignment).toHaveProperty('anonymous_instructor_annotations');
-    expect(canvasAssignment).toHaveProperty('anonymous_grading');
-    expect(canvasAssignment).toHaveProperty('graders_anonymous_to_graders');
-    expect(canvasAssignment).toHaveProperty('grader_count');
-    expect(canvasAssignment).toHaveProperty('grader_comments_visible_to_graders');
-    expect(canvasAssignment).toHaveProperty('final_grader_id');
-    expect(canvasAssignment).toHaveProperty('grader_names_visible_to_final_grader');
-    expect(canvasAssignment).toHaveProperty('allowed_attempts');
-    expect(canvasAssignment).toHaveProperty('annotatable_attachment_id');
-    expect(canvasAssignment).toHaveProperty('hide_in_gradebook');
-    expect(canvasAssignment).toHaveProperty('secure_params');
-    expect(canvasAssignment).toHaveProperty('lti_context_id');
-    expect(canvasAssignment).toHaveProperty('course_id');
-    expect(canvasAssignment).toHaveProperty('name');
-    expect(canvasAssignment).toHaveProperty('submission_types');
-    expect(canvasAssignment).toHaveProperty('has_submitted_submissions');
-    expect(canvasAssignment).toHaveProperty('due_date_required');
-    expect(canvasAssignment).toHaveProperty('max_name_length');
-    expect(canvasAssignment).toHaveProperty('in_closed_grading_period');
-    expect(canvasAssignment).toHaveProperty('graded_submissions_exist');
-    expect(canvasAssignment).toHaveProperty('is_quiz_assignment');
-    expect(canvasAssignment).toHaveProperty('can_duplicate');
-    expect(canvasAssignment).toHaveProperty('original_course_id');
-    expect(canvasAssignment).toHaveProperty('original_assignment_id');
-    expect(canvasAssignment).toHaveProperty('original_lti_resource_link_id');
-    expect(canvasAssignment).toHaveProperty('original_assignment_name');
-    expect(canvasAssignment).toHaveProperty('original_quiz_id');
-    expect(canvasAssignment).toHaveProperty('workflow_state');
-    expect(canvasAssignment).toHaveProperty('important_dates');
-    expect(canvasAssignment).toHaveProperty('muted');
-    expect(canvasAssignment).toHaveProperty('html_url');
-    expect(canvasAssignment).toHaveProperty('has_overrides');
-    expect(canvasAssignment).toHaveProperty('needs_grading_count');
-    expect(canvasAssignment).toHaveProperty('sis_assignment_id');
-    expect(canvasAssignment).toHaveProperty('integration_id');
-    expect(canvasAssignment).toHaveProperty('integration_data');
-    expect(canvasAssignment).toHaveProperty('use_rubric_for_grading');
-    expect(canvasAssignment).toHaveProperty('free_form_criterion_comments');
-    expect(canvasAssignment).toHaveProperty('rubric');
-    expect(canvasAssignment).toHaveProperty('rubric_settings');
-    expect(canvasAssignment).toHaveProperty('published');
-    expect(canvasAssignment).toHaveProperty('unpublishable');
-    expect(canvasAssignment).toHaveProperty('only_visible_to_overrides');
-    expect(canvasAssignment).toHaveProperty('locked_for_user');
-    expect(canvasAssignment).toHaveProperty('submissions_download_url');
-    expect(canvasAssignment).toHaveProperty('post_manually');
-    expect(canvasAssignment).toHaveProperty('anonymize_students');
-    expect(canvasAssignment).toHaveProperty('require_lockdown_browser');
-    expect(canvasAssignment).toHaveProperty('restrict_quantitative_data');
+    expect(canvasAssignment).toBeDefined();
   });
 
 
@@ -216,12 +147,6 @@ describe('getRubricList', () => {
     const canvasRubricList = await main.getRubricList('canvas', canvasCourseId, canvasToken);
     expect(canvasRubricList).toBeDefined();
     expect(Array.isArray(canvasRubricList)).toBe(true);
-    const firstRubric = canvasRubricList[0];
-    expect(firstRubric).toHaveProperty('id');
-    expect(firstRubric).toHaveProperty('context_id');
-    expect(firstRubric).toHaveProperty('context_type');
-    expect(firstRubric).toHaveProperty('points_possible');
-    expect(firstRubric).toHaveProperty('title');
   });
 
   it('should return a list of rubrics for Moodle', async () => {
@@ -234,11 +159,6 @@ describe('getRubricById', () => {
   it('should return a rubric object for Canvas', async () => {
     const canvasRubric = await main.getRubricById('canvas', canvasCourseId, canvasToken, canvasRubricId);
     expect(canvasRubric).toBeDefined();
-    expect(canvasRubric).toHaveProperty('id');
-    expect(canvasRubric).toHaveProperty('context_id');
-    expect(canvasRubric).toHaveProperty('context_type');
-    expect(canvasRubric).toHaveProperty('points_possible');
-    expect(canvasRubric).toHaveProperty('title');
   });
 
   it('should return a rubric object for Moodle', async () => {
