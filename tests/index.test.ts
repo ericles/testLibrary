@@ -118,7 +118,7 @@ describe('getTeacherById', () => {
 
 describe('getAssignmentList', () => {
   it('should return a list of assignments for Canvas', async () => {
-    const canvasAssignmentList = await main.getAssignmentList('canvas', canvasCourseId, canvasToken);
+    const canvasAssignmentList = await main.getAssignmentList('canvas', canvasToken, canvasCourseId);
     expect(canvasAssignmentList).toBeDefined();
     expect(Array.isArray(canvasAssignmentList)).toBe(true);
     const firstAssignment = canvasAssignmentList[0];
@@ -202,7 +202,7 @@ describe('getAssignmentList', () => {
 
 describe('getAssignmentById', () => {
   it('should return an assignment object for Canvas', async () => {
-    const canvasAssignment = await main.getAssignmentById('canvas', canvasCourseId, canvasToken, canvasAssignmentId);
+    const canvasAssignment = await main.getAssignmentById('canvas',  canvasToken, canvasCourseId, canvasAssignmentId);
     
     expect(canvasAssignment).toHaveProperty('id');
     expect(canvasAssignment).toHaveProperty('description');
@@ -284,7 +284,7 @@ describe('getAssignmentById', () => {
 
 describe('getRubricList', () => {
   it('should return a list of rubrics for Canvas', async () => {
-    const canvasRubricList = await main.getRubricList('canvas', canvasCourseId, canvasToken);
+    const canvasRubricList = await main.getRubricList('canvas', canvasToken, canvasCourseId);
     expect(canvasRubricList).toBeDefined();
     expect(Array.isArray(canvasRubricList)).toBe(true);
     const firstRubric = canvasRubricList[0];
@@ -309,7 +309,7 @@ describe('getRubricList', () => {
 
 describe('getRubricById', () => {
   it('should return a rubric object for Canvas', async () => {
-    const canvasRubric = await main.getRubricById('canvas', canvasCourseId, canvasToken, canvasRubricId);
+    const canvasRubric = await main.getRubricById('canvas', canvasToken, canvasCourseId, canvasRubricId);
     expect(canvasRubric).toBeDefined();
     expect(canvasRubric).toHaveProperty('id');
     expect(canvasRubric).toHaveProperty('context_id');
