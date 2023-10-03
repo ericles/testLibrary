@@ -28,7 +28,7 @@ export function getCourseById(){
 }
 
 export function getAssignmentList(){
-
+    end point -https://edlibrary.moodlecloud.com/webservice/rest/server.php?wstoken=73f5455ea3cff11ee966f6d19550e0e2&wsfunction=mod_assign_get_assignments&moodlewsrestformat=json&courseids[0]=9
 }
 
 export function getAssignmentById(){
@@ -40,5 +40,5 @@ export function getRubricList(){
 }
 
 export function getRubricById(){
-
+    end point - https://edlibrary.moodlecloud.com/webservice/rest/server.php?wstoken=73f5455ea3cff11ee966f6d19550e0e2&wsfunction=mod_assign_get_submission_status&moodlewsrestformat=json&assignid=3&userid=5
 }
