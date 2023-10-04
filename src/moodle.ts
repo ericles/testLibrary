@@ -3,23 +3,23 @@ const axios = require('axios'); // Use require instead of import
 const API_URL = 'https://edlibrary.moodlecloud.com/webservice/rest/server.php';
 const WS_TOKEN = 'b272fd552b8ecf4292a1e0613acf2546';
 
-function getStudentList(){
+export function getStudentList(){
     
 }
 
-function getStudentById(){
+export function getStudentById(){
 
 }
 
-function getTeacherList(){
+export function getTeacherList(){
 
 }
 
-function getTeacherById(){
+export function getTeacherById(){
 
 }
 
-async function getCourseList(){
+export async function getCourseList(){
 
     try {
         const response = await axios.get(API_URL, {
@@ -43,24 +43,24 @@ async function getCourseList(){
 
 }
 
-function getCourseById(){
+export function getCourseById(){
 
 }
 
-function getAssignmentList(){
+export function getAssignmentList(){
 
 }
 
-function getAssignmentById(){
+export function getAssignmentById(){
 
 }
 
-function getRubricList(){
+export function getRubricList(){
 
 }
 
-function getRubricById(){
+export function getRubricById(){
 
 }
 
-getCourseList()
+// getCourseList()
