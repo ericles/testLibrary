@@ -8,11 +8,11 @@ const canvasTeacherId = "109412162";
 const canvasAssignmentId = "40873657";
 const canvasRubricId = "1743469";
 
-const moodleToken = "moodle";
-const moodleCourseId = "moodle";
-const moodleStudentId = "moodle";
-const moodleTeacherId = "moodle";
-const moodleAssignmentId = "moodle";
+const moodleToken = "73f5455ea3cff11ee966f6d19550e0e2";
+const moodleCourseId = "10";
+const moodleStudentId = "5";
+const moodleTeacherId = "4";
+const moodleAssignmentId = "9";
 const moodleRubricId = "moodle";
 
 
@@ -40,8 +40,9 @@ describe('getStudentList', () => {
   
 
   it('should return a list of students for Moodle', async () => {
-    const moodleStudentList = await main.getStudentList('moodle', moodleCourseId, moodleToken);
+    const moodleStudentList = await main.getStudentList('moodle', moodleCourseId);
     expect(moodleStudentList).toBeDefined();
+    console.log(moodleStudentList);
   });
 });
 

@@ -3,7 +3,7 @@ import * as moodle from "./moodle";
 import * as standardiser from "./standardiser";
 
 
-export async function getStudentList(lms: string, courseId: string, token: string){
+export async function getStudentList(lms: string, courseId: string, token: string = ""){
   let data;
 
   switch (lms) {
@@ -13,6 +13,14 @@ export async function getStudentList(lms: string, courseId: string, token: strin
         // console.log("getStudentListCanvas", data);
       } catch (error) {
         console.error("Error in getStudentListCanvas:", error);
+      }
+      break;
+      case 'moodle':
+      try {
+        data = await moodle.getStudentList(courseId);
+        console.log("getStudentListMoodle", data);
+      } catch (error) {
+        console.error("Error in getStudentListMoodle:", error);
       }
       break;
     default:
@@ -32,6 +40,15 @@ export async function getStudentById(lms: string, courseId: string, token: strin
         // console.log("getStudentByIdCanvas", data);
       } catch (error) {
         console.error("Error in getStudentByIdCanvas:", error);
+      }
+      break;
+
+      case 'moodle':
+      try {
+        data = await moodle.getStudentById(courseId, studentId);
+        // console.log("getStudentByIdMoodle", data);
+      } catch (error) {
+        console.error("Error in getStudentByIdMoodle:", error);
       }
       break;
     default:
