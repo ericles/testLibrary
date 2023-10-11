@@ -1,4 +1,5 @@
 // import { testCanvas } from '../index';
+import { getCourseList } from "../src/canvas";
 import * as main from "../src/main";
 
 const canvasToken = '7~HaO4qXhlfhquEAircCxGAE68LUIho1kmJ3JcYviNHh8j7OjJpdcmwHX6hgJAcA4n';
@@ -377,4 +378,16 @@ describe('getRubricById', () => {
     expect(moodleRubric).toBeDefined();
   });
 });
+
+describe("getCourseList", () => {
+  it('should return a rubric object for Canvas', async () => {
+    const moodleCourseList = await main.getCourseList('canvas', canvasToken);
+    expect(moodleCourseList).toBeDefined();
+  });
+  it('should return a rubric object for Moodle', async () => {
+    const moodleCourseList = await main.getCourseList('moodle', moodleToken);
+    expect(moodleCourseList).toBeDefined();
+  });
+});
+
 
