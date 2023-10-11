@@ -51,12 +51,39 @@ describe('getStudentList', () => {
     // // does the first student have these properties?
     expect(firstStudent).toHaveProperty('id');
     expect(firstStudent).toHaveProperty('username');
-    expect(firstStudent).toHaveProperty('firstaccess');
+    expect(firstStudent).toHaveProperty('firstname');
+    expect(firstStudent).toHaveProperty('lastname');
     expect(firstStudent).toHaveProperty('fullname');
-    // expect(firstStudent).toHaveProperty('short_name');
-    // expect(firstStudent).toHaveProperty('sis_user_id');
-    // expect(firstStudent).toHaveProperty('integration_id');
-    // console.log(moodleStudentList);
+    expect(firstStudent).toHaveProperty('email');
+    expect(firstStudent).toHaveProperty('department');
+    expect(firstStudent).toHaveProperty('firstaccess');
+    expect(firstStudent).toHaveProperty('lastaccess');
+    expect(firstStudent).toHaveProperty('lastcourseaccess');
+    expect(firstStudent).toHaveProperty('description');
+    expect(firstStudent).toHaveProperty('descriptionformat');
+    expect(firstStudent).toHaveProperty('city');
+    expect(firstStudent).toHaveProperty('country');
+    expect(firstStudent).toHaveProperty('profileimageurlsmall');
+    expect(firstStudent).toHaveProperty('profileimageurl');
+    expect(firstStudent).toHaveProperty('groups');
+    //check the group property
+    expect(firstStudent.groups).toBeInstanceOf(Array);
+    expect(firstStudent.groups[0]).toHaveProperty('id');
+    expect(firstStudent.groups[0]).toHaveProperty('name');
+    expect(firstStudent.groups[0]).toHaveProperty('description');
+    expect(firstStudent.groups[0]).toHaveProperty('descriptionformat');
+    // Check the 'roles' property
+    expect(firstStudent).toHaveProperty('roles');
+    expect(firstStudent.roles).toBeInstanceOf(Array);
+    expect(firstStudent.roles[0]).toHaveProperty('roleid');
+    expect(firstStudent.roles[0]).toHaveProperty('shortname');
+    expect(firstStudent.roles[0]).toHaveProperty('sortorder');
+    // Check the 'enrolledcourses' property
+    expect(firstStudent).toHaveProperty('enrolledcourses');
+    expect(firstStudent.enrolledcourses).toBeInstanceOf(Array);
+    expect(firstStudent.enrolledcourses[0]).toHaveProperty('id');
+    expect(firstStudent.enrolledcourses[0]).toHaveProperty('fullname');
+    expect(firstStudent.enrolledcourses[0]).toHaveProperty('shortname');
   });
 });
 
@@ -78,11 +105,12 @@ describe('getStudentById', () => {
 
   });
 
-  it('should return a student object for Moodle', async () => {
+  fit('should return a student object for Moodle', async () => {
     const moodleStudent = await main.getStudentById('moodle', moodleCourseId, moodleToken, moodleStudentId);
     //is moodleStudent defined?    
     expect(moodleStudent).toBeDefined();
     // specific assertions for moodle:
+    console.log(moodleStudent);
     expect(moodleStudent).toHaveProperty('username');
     expect(moodleStudent).toHaveProperty('firstaccess');
     expect(moodleStudent).toHaveProperty('fullname');
