@@ -151,20 +151,45 @@ describe('getTeacherById', () => {
 
   fit('should return a teacher object for Moodle', async () => {
     const moodleTeacher = await main.getTeacherById('moodle', moodleCourseId, moodleToken, moodleTeacherId);
-    //is moodleStudent defined? 
-    console.log("MOODLE TEACHER OBJECT: " + JSON.stringify(moodleTeacher));
+    
+    // Check if moodleTeacher is defined
     expect(moodleTeacher).toBeDefined();
-    // specific assertions for moodle:
+
+    // Specific assertions for moodleTeacher properties
+    expect(moodleTeacher).toHaveProperty('id');
     expect(moodleTeacher).toHaveProperty('username');
-    expect(moodleTeacher).toHaveProperty('firstaccess');
+    expect(moodleTeacher).toHaveProperty('firstname');
+    expect(moodleTeacher).toHaveProperty('lastname');
     expect(moodleTeacher).toHaveProperty('fullname');
-    // expect(moodleTeacher).toHaveProperty('short_name');
-    // expect(moodleTeacher).toHaveProperty('sis_user_id');
-    // expect(moodleTeacher).toHaveProperty('integration_id');
-    // expect(moodleTeacher).toHaveProperty('root_account');
-    // expect(moodleTeacher).toHaveProperty('login_id');
-  });
+    expect(moodleTeacher).toHaveProperty('email');
+    expect(moodleTeacher).toHaveProperty('address');
+    expect(moodleTeacher).toHaveProperty('phone1');
+    expect(moodleTeacher).toHaveProperty('department');
+    expect(moodleTeacher).toHaveProperty('institution');
+    expect(moodleTeacher).toHaveProperty('idnumber');
+    expect(moodleTeacher).toHaveProperty('firstaccess');
+    expect(moodleTeacher).toHaveProperty('lastaccess');
+    expect(moodleTeacher).toHaveProperty('lastcourseaccess');
+    expect(moodleTeacher).toHaveProperty('description');
+    expect(moodleTeacher).toHaveProperty('descriptionformat');
+    expect(moodleTeacher).toHaveProperty('city');
+    expect(moodleTeacher).toHaveProperty('country');
+    expect(moodleTeacher).toHaveProperty('profileimageurlsmall');
+    expect(moodleTeacher).toHaveProperty('profileimageurl');
+    // Check the 'roles' property
+    expect(moodleTeacher).toHaveProperty('roles');
+    expect(moodleTeacher.roles).toBeInstanceOf(Array);
+    expect(moodleTeacher.roles[0]).toHaveProperty('roleid');
+    expect(moodleTeacher.roles[0]).toHaveProperty('shortname');
+    // Check the 'enrolledcourses' property
+    expect(moodleTeacher).toHaveProperty('enrolledcourses');
+    expect(moodleTeacher.enrolledcourses).toBeInstanceOf(Array);
+    expect(moodleTeacher.enrolledcourses[0]).toHaveProperty('id');
+    expect(moodleTeacher.enrolledcourses[0]).toHaveProperty('fullname');
+    expect(moodleTeacher.enrolledcourses[0]).toHaveProperty('shortname');
+    // You can add similar checks for the other enrolled courses.
 });
+
 
 describe('getAssignmentList', () => {
   it('should return a list of assignments for Canvas', async () => {
