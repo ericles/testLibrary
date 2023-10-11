@@ -1,4 +1,4 @@
-// import { testCanvas } from '../index';
+// impsort { testCanvas } from '../index';
 import { getCourseList } from "../src/canvas";
 import * as main from "../src/main";
 
