@@ -111,9 +111,10 @@ describe('getTeacherList', () => {
     expect(firstTeacher).toHaveProperty('email');
   });
 
-  it('should return a list of teachers for Moodle', async () => {
+  fit('should return a list of teachers for Moodle', async () => {
     const moodleTeacherList = await main.getTeacherList('moodle', moodleCourseId, moodleToken);
     // is moodleTeacherList defined?
+    console.log("MOODLE TEACHER LIST" + moodleTeacherList);
     expect(moodleTeacherList).toBeDefined();
     // is it array?
     expect(Array.isArray(moodleTeacherList)).toBe(true);
@@ -149,12 +150,10 @@ describe('getTeacherById', () => {
     // expect(canvasTeacher).toHaveProperty('email');
   });
 
-  fit('should return a teacher object for Moodle', async () => {
+  it('should return a teacher object for Moodle', async () => {
     const moodleTeacher = await main.getTeacherById('moodle', moodleCourseId, moodleToken, moodleTeacherId);
-    
     // Check if moodleTeacher is defined
     expect(moodleTeacher).toBeDefined();
-
     // Specific assertions for moodleTeacher properties
     expect(moodleTeacher).toHaveProperty('id');
     expect(moodleTeacher).toHaveProperty('username');
