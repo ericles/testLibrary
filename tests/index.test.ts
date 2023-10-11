@@ -114,7 +114,7 @@ describe('getTeacherList', () => {
   fit('should return a list of teachers for Moodle', async () => {
     const moodleTeacherList = await main.getTeacherList('moodle', moodleCourseId, moodleToken);
     // is moodleTeacherList defined?
-    console.log("MOODLE TEACHER LIST" + moodleTeacherList);
+    console.log("MOODLE TEACHER LIST" + JSON.stringify(moodleTeacherList));
     expect(moodleTeacherList).toBeDefined();
     // is it array?
     expect(Array.isArray(moodleTeacherList)).toBe(true);
@@ -407,11 +407,13 @@ describe('getRubricById', () => {
 
 describe("getCourseList", () => {
   it('should return a course list object for Canvas', async () => {
-    const moodleCourseList = await main.getCourseList('canvas', canvasToken);
-    expect(moodleCourseList).toBeDefined();
+    const canvasCourseList = await main.getCourseList('canvas', canvasToken);
+    console.log("CANVAS COURSE LIST" + JSON.stringify(canvasCourseList));
+    expect(canvasCourseList).toBeDefined();
   });
   it('should return a course object for Moodle', async () => {
     const moodleCourseList = await main.getCourseList('moodle', moodleToken);
+    console.log("MOODLE COURSE LIST" + JSON.stringify(moodleCourseList));
     expect(moodleCourseList).toBeDefined();
   });
 });
