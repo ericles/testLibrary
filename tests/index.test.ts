@@ -149,9 +149,10 @@ describe('getTeacherById', () => {
     // expect(canvasTeacher).toHaveProperty('email');
   });
 
-  it('should return a teacher object for Moodle', async () => {
+  fit('should return a teacher object for Moodle', async () => {
     const moodleTeacher = await main.getTeacherById('moodle', moodleCourseId, moodleToken, moodleTeacherId);
     //is moodleStudent defined? 
+    console.log("MOODLE TEACHER OBJECT: " + moodleTeacher);
     expect(moodleTeacher).toBeDefined();
     // specific assertions for moodle:
     expect(moodleTeacher).toHaveProperty('username');
@@ -380,11 +381,11 @@ describe('getRubricById', () => {
 });
 
 describe("getCourseList", () => {
-  it('should return a rubric object for Canvas', async () => {
+  it('should return a course list object for Canvas', async () => {
     const moodleCourseList = await main.getCourseList('canvas', canvasToken);
     expect(moodleCourseList).toBeDefined();
   });
-  it('should return a rubric object for Moodle', async () => {
+  it('should return a course object for Moodle', async () => {
     const moodleCourseList = await main.getCourseList('moodle', moodleToken);
     expect(moodleCourseList).toBeDefined();
   });
