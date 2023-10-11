@@ -152,7 +152,7 @@ describe('getTeacherById', () => {
   fit('should return a teacher object for Moodle', async () => {
     const moodleTeacher = await main.getTeacherById('moodle', moodleCourseId, moodleToken, moodleTeacherId);
     //is moodleStudent defined? 
-    console.log("MOODLE TEACHER OBJECT: " + moodleTeacher);
+    console.log("MOODLE TEACHER OBJECT: " + JSON.stringify(moodleTeacher));
     expect(moodleTeacher).toBeDefined();
     // specific assertions for moodle:
     expect(moodleTeacher).toHaveProperty('username');
