@@ -111,18 +111,35 @@ describe('getTeacherList', () => {
     expect(firstTeacher).toHaveProperty('email');
   });
 
-  it('should return a list of teachers for Moodle', async () => {
-    const moodleTeacherList = await main.getTeacherList('moodle', moodleCourseId, moodleToken);
-    
-    // Check if moodleTeacherList is defined
-    expect(moodleTeacherList).toBeDefined();
-    
-    // Check if it's an array
-    expect(Array.isArray(moodleTeacherList)).toBe(true);
-    const firstTeacher = moodleTeacherList[0];
-    // Check that each teacher object in the list has these properties
-    expect(firstTeacher).toHaveProperty('id');
-        // You can add more properties as needed
+  it('should return a teacher object for Moodle', async () => {
+    const moodleTeacher = await main.getTeacherById('moodle', moodleCourseId, moodleToken, moodleTeacherId);
+
+    // Check if moodleTeacher is defined
+    expect(moodleTeacher).toBeDefined();
+
+    // Specific assertions for moodleTeacher properties
+    expect(moodleTeacher).toHaveProperty('id');
+    expect(moodleTeacher).toHaveProperty('username');
+    expect(moodleTeacher).toHaveProperty('firstname');
+    expect(moodleTeacher).toHaveProperty('lastname');
+    expect(moodleTeacher).toHaveProperty('fullname');
+    expect(moodleTeacher).toHaveProperty('email');
+    expect(moodleTeacher).toHaveProperty('address');
+    expect(moodleTeacher).toHaveProperty('phone1');
+    expect(moodleTeacher).toHaveProperty('department');
+    expect(moodleTeacher).toHaveProperty('institution');
+    expect(moodleTeacher).toHaveProperty('idnumber');
+    expect(moodleTeacher).toHaveProperty('firstaccess');
+    expect(moodleTeacher).toHaveProperty('lastaccess');
+    expect(moodleTeacher).toHaveProperty('lastcourseaccess');
+    expect(moodleTeacher).toHaveProperty('description');
+    expect(moodleTeacher).toHaveProperty('descriptionformat');
+    expect(moodleTeacher).toHaveProperty('city');
+    expect(moodleTeacher).toHaveProperty('country');
+    expect(moodleTeacher).toHaveProperty('profileimageurlsmall');
+    expect(moodleTeacher).toHaveProperty('profileimageurl');
+    // Check the 'roles' property
+    expect(moodleTeacher).toHaveProperty('roles');
     });
   });
 
