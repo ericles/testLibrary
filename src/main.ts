@@ -108,6 +108,14 @@ export async function getCourseList(lms: string, token: string) {
         console.error("Error in getCourseListCanvas:", error);
       }
       break;
+      case 'moodle':
+      try {
+        data = await moodle.getCourseList();
+        console.log("getCourseListMoodle", data);
+      } catch (error) {
+        console.error("Error in getCourseListMoodle:", error);
+      }
+      break;
     default:
       break;
   }
