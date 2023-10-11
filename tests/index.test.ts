@@ -1,7 +1,7 @@
 // import { testCanvas } from '../index';
 import * as main from "../src/main";
 
-const canvasToken= '7~HaO4qXhlfhquEAircCxGAE68LUIho1kmJ3JcYviNHh8j7OjJpdcmwHX6hgJAcA4n';
+const canvasToken = '7~HaO4qXhlfhquEAircCxGAE68LUIho1kmJ3JcYviNHh8j7OjJpdcmwHX6hgJAcA4n';
 const canvasCourseId = "7809929";
 const canvasStudentId = "109412431";
 const canvasTeacherId = "109412162";
@@ -37,12 +37,25 @@ describe('getStudentList', () => {
     expect(firstStudent).toHaveProperty('sis_user_id');
     expect(firstStudent).toHaveProperty('integration_id');
   });
-  
+
 
   it('should return a list of students for Moodle', async () => {
     const moodleStudentList = await main.getStudentList('moodle', moodleCourseId);
+    // is moodleStudentList defined?
     expect(moodleStudentList).toBeDefined();
-    console.log(moodleStudentList);
+    // is it array?
+    expect(Array.isArray(moodleStudentList)).toBe(true);
+    // save first object in array to firstStudent
+    const firstStudent = moodleStudentList[0];
+    // // does the first student have these properties?
+    expect(firstStudent).toHaveProperty('id');
+    expect(firstStudent).toHaveProperty('username');
+    expect(firstStudent).toHaveProperty('firstaccess');
+    expect(firstStudent).toHaveProperty('fullname');
+    // expect(firstStudent).toHaveProperty('short_name');
+    // expect(firstStudent).toHaveProperty('sis_user_id');
+    // expect(firstStudent).toHaveProperty('integration_id');
+    // console.log(moodleStudentList);
   });
 });
 
@@ -66,8 +79,16 @@ describe('getStudentById', () => {
 
   it('should return a student object for Moodle', async () => {
     const moodleStudent = await main.getStudentById('moodle', moodleCourseId, moodleToken, moodleStudentId);
-    //is moodleStudent defined?
+    //is moodleStudent defined?    
     expect(moodleStudent).toBeDefined();
+    // specific assertions for moodle:
+    expect(moodleStudent).toHaveProperty('username');
+    expect(moodleStudent).toHaveProperty('firstaccess');
+    expect(moodleStudent).toHaveProperty('fullname');
+    // expect(moodleStudent).toHaveProperty('short_name');
+    // expect(moodleStudent).toHaveProperty('sis_user_id');
+    // expect(moodleStudent).toHaveProperty('integration_id');
+    // expect(moodleStudent).toHaveProperty('root_account');
   });
 });
 
@@ -90,8 +111,24 @@ describe('getTeacherList', () => {
   });
 
   it('should return a list of teachers for Moodle', async () => {
-    const moodleTeacherList = await main.getTeacherList('moodle', moodleToken, moodleCourseId);
+    const moodleTeacherList = await main.getTeacherList('moodle', moodleCourseId, moodleToken);
+    // is moodleTeacherList defined?
     expect(moodleTeacherList).toBeDefined();
+    // is it array?
+    expect(Array.isArray(moodleTeacherList)).toBe(true);
+    // save first object in array to firstTeacher
+    const firstTeacher = moodleTeacherList[0];
+    // // does the first teacher have these properties?
+    expect(firstTeacher).toHaveProperty('id');
+    expect(firstTeacher).toHaveProperty('username');
+    expect(firstTeacher).toHaveProperty('firstaccess');
+    expect(firstTeacher).toHaveProperty('fullname');
+    // expect(firstTeacher).toHaveProperty('short_name');
+    // expect(firstTeacher).toHaveProperty('sis_user_id');
+    // expect(firstTeacher).toHaveProperty('integration_id');
+    // expect(firstTeacher).toHaveProperty('root_account');
+    // expect(firstTeacher).toHaveProperty('login_id');
+    // expect(firstTeacher).toHaveProperty('email');
   });
 });
 
@@ -113,7 +150,17 @@ describe('getTeacherById', () => {
 
   it('should return a teacher object for Moodle', async () => {
     const moodleTeacher = await main.getTeacherById('moodle', moodleCourseId, moodleToken, moodleTeacherId);
+    //is moodleStudent defined? 
     expect(moodleTeacher).toBeDefined();
+    // specific assertions for moodle:
+    expect(moodleTeacher).toHaveProperty('username');
+    expect(moodleTeacher).toHaveProperty('firstaccess');
+    expect(moodleTeacher).toHaveProperty('fullname');
+    // expect(moodleTeacher).toHaveProperty('short_name');
+    // expect(moodleTeacher).toHaveProperty('sis_user_id');
+    // expect(moodleTeacher).toHaveProperty('integration_id');
+    // expect(moodleTeacher).toHaveProperty('root_account');
+    // expect(moodleTeacher).toHaveProperty('login_id');
   });
 });
 
@@ -203,8 +250,8 @@ describe('getAssignmentList', () => {
 
 describe('getAssignmentById', () => {
   it('should return an assignment object for Canvas', async () => {
-    const canvasAssignment = await main.getAssignmentById('canvas',  canvasToken, canvasCourseId, canvasAssignmentId);
-    
+    const canvasAssignment = await main.getAssignmentById('canvas', canvasToken, canvasCourseId, canvasAssignmentId);
+
     expect(canvasAssignment).toHaveProperty('id');
     expect(canvasAssignment).toHaveProperty('description');
     expect(canvasAssignment).toHaveProperty('due_at');
@@ -278,7 +325,7 @@ describe('getAssignmentById', () => {
   });
 
   it('should return an assignment object for Moodle', async () => {
-    const moodleAssignment = await  main.getAssignmentById('moodle', moodleCourseId, moodleToken, moodleAssignmentId);
+    const moodleAssignment = await main.getAssignmentById('moodle', moodleCourseId, moodleToken, moodleAssignmentId);
     expect(moodleAssignment).toBeDefined();
   });
 });

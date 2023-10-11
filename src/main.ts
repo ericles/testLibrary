@@ -3,7 +3,7 @@ import * as moodle from "./moodle";
 import * as standardiser from "./standardiser";
 
 
-export async function getStudentList(lms: string, courseId: string, token: string = ""){
+export async function getStudentList(lms: string, courseId: string, token: string = "") {
   let data;
 
   switch (lms) {
@@ -15,10 +15,10 @@ export async function getStudentList(lms: string, courseId: string, token: strin
         console.error("Error in getStudentListCanvas:", error);
       }
       break;
-      case 'moodle':
+    case 'moodle':
       try {
         data = await moodle.getStudentList(courseId);
-        console.log("getStudentListMoodle", data);
+        //console.log("getStudentListMoodle", data);
       } catch (error) {
         console.error("Error in getStudentListMoodle:", error);
       }
@@ -30,7 +30,7 @@ export async function getStudentList(lms: string, courseId: string, token: strin
   return data;
 }
 
-export async function getStudentById(lms: string, courseId: string, token: string, studentId: string){
+export async function getStudentById(lms: string, courseId: string, token: string, studentId: string) {
   let data;
 
   switch (lms) {
@@ -42,11 +42,9 @@ export async function getStudentById(lms: string, courseId: string, token: strin
         console.error("Error in getStudentByIdCanvas:", error);
       }
       break;
-
-      case 'moodle':
+    case 'moodle':
       try {
         data = await moodle.getStudentById(courseId, studentId);
-        // console.log("getStudentByIdMoodle", data);
       } catch (error) {
         console.error("Error in getStudentByIdMoodle:", error);
       }
@@ -58,7 +56,7 @@ export async function getStudentById(lms: string, courseId: string, token: strin
   return data;
 }
 
-export async function getTeacherList(lms: string, courseId: string, token: string){
+export async function getTeacherList(lms: string, courseId: string, token: string) {
   let data;
 
   switch (lms) {
@@ -70,6 +68,14 @@ export async function getTeacherList(lms: string, courseId: string, token: strin
         console.error("Error in getTeacherListCanvas:", error);
       }
       break;
+    case 'moodle':
+      try {
+        data = await moodle.getTeacherList(courseId);
+        // console.log("getTeacherListMoodle", data);
+      } catch (error) {
+        console.error("Error in getTeacherListMoodle:", error);
+      }
+      break;
     default:
       break;
   }
@@ -77,7 +83,7 @@ export async function getTeacherList(lms: string, courseId: string, token: strin
   return data;
 }
 
-export async function getTeacherById(lms: string, courseId: string, token: string, teacherId: string){
+export async function getTeacherById(lms: string, courseId: string, token: string, teacherId: string) {
   let data;
 
   switch (lms) {
@@ -87,6 +93,14 @@ export async function getTeacherById(lms: string, courseId: string, token: strin
         // console.log("getTeacherByIdCanvas", data);
       } catch (error) {
         console.error("Error in getTeacherByIdCanvas:", error);
+      }
+      break;
+      case 'moodle':
+      try {
+        data = await moodle.getTeacherById(courseId, teacherId);
+        // console.log("getTeacherByIdMoodle", data);
+      } catch (error) {
+        console.error("Error in getTeacherByIdMoodle:", error);
       }
       break;
     default:
@@ -122,9 +136,9 @@ export async function getCourseList(lms: string, token: string) {
 
   return data;
 }
-  
 
-export async function getCourseById(lms: string, token: string, courseId: string){
+
+export async function getCourseById(lms: string, token: string, courseId: string) {
   let data;
 
   switch (lms) {
@@ -143,7 +157,7 @@ export async function getCourseById(lms: string, token: string, courseId: string
   return data;
 }
 
-export async function getAssignmentList(lms: string, token: string, courseId: string){
+export async function getAssignmentList(lms: string, token: string, courseId: string) {
   let data;
 
   switch (lms) {
@@ -162,7 +176,7 @@ export async function getAssignmentList(lms: string, token: string, courseId: st
   return data;
 }
 
-export async function getAssignmentById(lms: string, token: string, courseId: string, assignmentId: string){
+export async function getAssignmentById(lms: string, token: string, courseId: string, assignmentId: string) {
   let data;
 
   switch (lms) {
@@ -181,7 +195,7 @@ export async function getAssignmentById(lms: string, token: string, courseId: st
   return data;
 }
 
-export async function getRubricList(lms: string, token: string, courseId: string){
+export async function getRubricList(lms: string, token: string, courseId: string) {
   let data;
 
   switch (lms) {
@@ -200,7 +214,7 @@ export async function getRubricList(lms: string, token: string, courseId: string
   return data;
 }
 
-export async function getRubricById(lms: string, token: string, courseId: string, rubricId: string){
+export async function getRubricById(lms: string, token: string, courseId: string, rubricId: string) {
   let data;
 
   switch (lms) {
