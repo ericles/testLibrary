@@ -189,6 +189,7 @@ describe('getTeacherById', () => {
     expect(moodleTeacher.enrolledcourses[0]).toHaveProperty('shortname');
     // You can add similar checks for the other enrolled courses.
 });
+});
 
 
 describe('getAssignmentList', () => {
