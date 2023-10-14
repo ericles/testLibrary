@@ -174,7 +174,9 @@ export async function getAssignmentList() {
 
     if (response.status === 200) {
       const data = response.data;
+      
       // Process the data as needed here
+      return data;
       console.log('Assignments data from API:', data);
     } else {
       console.error('Failed to fetch data for assignments:', response.statusText);
@@ -196,8 +198,9 @@ export async function getAssignmentById(courseId: number) {
     });
 
     if (response.status === 200) {
-      const data = response.data;
+      const data = response.data;      
       // Process the data as needed here
+      return data;
       console.log('Assignments:', data);
     } else {
       console.error('Failed to fetch data:', response.statusText);
