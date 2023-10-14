@@ -105,7 +105,7 @@ describe('getStudentById', () => {
 
   });
 
-  fit('should return a student object for Moodle', async () => {
+  it('should return a student object for Moodle', async () => {
     const moodleStudent = await main.getStudentById('moodle', moodleCourseId, moodleToken, moodleStudentId);
     //is moodleStudent defined?    
     expect(moodleStudent).toBeDefined();
