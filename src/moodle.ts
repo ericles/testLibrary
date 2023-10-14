@@ -148,9 +148,9 @@ export async function getCourseList() {
     if (response.status === 200) {
       const data = response.data;
       // Process the data as needed here
-      console.log('Courses:', data);
+      console.log('Courses data from API:', data);
     } else {
-      console.error('Failed to fetch data:', response.statusText);
+      console.error('Failed to fetch data from course:', response.statusText);
     }
   } catch (error) {
     console.error('Error:');
@@ -175,9 +175,9 @@ export async function getAssignmentList() {
     if (response.status === 200) {
       const data = response.data;
       // Process the data as needed here
-      console.log('Assignments:', data);
+      console.log('Assignments data from API:', data);
     } else {
-      console.error('Failed to fetch data:', response.statusText);
+      console.error('Failed to fetch data for assignments:', response.statusText);
     }
   } catch (error) {
     console.error('Error:');
