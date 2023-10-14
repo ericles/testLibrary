@@ -152,7 +152,7 @@ export async function getCourseById(lms: string, token: string, courseId: string
       break;
       case 'moodle':
       try {
-        data = await moodle.getCourseById(1);
+        data = await moodle.getCourseById(courseId);
         console.log("getCourseByIdMoodle", data);
       } catch (error) {
         console.error("Error in getCourseByIdMoodle:", error);

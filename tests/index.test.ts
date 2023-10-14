@@ -458,4 +458,17 @@ describe("getCourseList", () => {
   });
 });
 
+describe("getCourseById", () => {
+  it('should return a course by id object for Canvas', async () => {
+    const canvasCourseList = await main.getCourseById('canvas', canvasToken, canvasCourseId);
+    console.log("CANVAS COURSE LIST" + JSON.stringify(canvasCourseList));
+    expect(canvasCourseList).toBeDefined();
+  });
+  it('should return a course object for Moodle', async () => {
+    const moodleCourseList = await main.getCourseById('moodle', moodleToken, moodleCourseId);
+    console.log("MOODLE COURSE LIST" + JSON.stringify(moodleCourseList));
+    expect(moodleCourseList).toBeDefined();
+  });
+});
+
 

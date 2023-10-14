@@ -149,6 +149,7 @@ export async function getCourseList() {
       const data = response.data;
       // Process the data as needed here
       console.log('Courses data from API:', data);
+      return data;
     } else {
       console.error('Failed to fetch data from course:', response.statusText);
     }
@@ -158,7 +159,7 @@ export async function getCourseList() {
 
 }
 
-export async function getCourseById(courseId: number) {
+export async function getCourseById(courseId: string) {
   try {
     const options = {
       ids: [courseId], // Aqui você pode adicionar os IDs desejados
