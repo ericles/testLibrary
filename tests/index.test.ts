@@ -13,7 +13,7 @@ const moodleToken = "73f5455ea3cff11ee966f6d19550e0e2";
 const moodleCourseId = "10";
 const moodleStudentId = "5";
 const moodleTeacherId = "4";
-const moodleAssignmentId = "9";
+const moodleAssignmentId = "9"; //test
 const moodleRubricId = "moodle";
 
 
