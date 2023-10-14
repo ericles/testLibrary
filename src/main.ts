@@ -169,7 +169,15 @@ export async function getAssignmentList(lms: string, token: string, courseId: st
         console.error("Error in getAssignmentListCanvas:", error);
       }
       break;
-    default:
+    case 'moodle':
+      try{
+        data = await moodle.getAssignmentList(); //just for testing
+        console.log("getAssignmentListMoodle", data);
+      } catch (error) {
+        console.error("Error in getAssignmentListMoodle:", error);
+      }
+      break;
+      default:
       break;
   }
 
@@ -185,10 +193,18 @@ export async function getAssignmentById(lms: string, token: string, courseId: st
         data = await canvas.getAssignmentById(token, courseId, assignmentId);
         // console.log("getAssignmentByIdCanvas", data);
       } catch (error) {
-        console.error("Error in getAssignmentByIdCanvas:", error);
+        console.error("Error in getAssignmentByIdMoodle:", error);
       }
       break;
-    default:
+      case 'moodle':
+        try{
+          data = await moodle.getAssignmentById(9); //just for testing
+          console.log("getAssignmentListMoodle", data);
+        } catch (error) {
+          console.error("Error in getAssignmentListMoodle:", error);
+        }
+      break;
+      default:
       break;
   }
 

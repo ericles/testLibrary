@@ -162,11 +162,49 @@ export function getCourseById() {
 
 }
 
-export function getAssignmentList() {
+export async function getAssignmentList() {
+  try {
+    const response = await axios.get(API_URL, {
+      params: {
+        wstoken: WS_TOKEN,
+        wsfunction: 'mod_assign_get_assignments',
+        moodlewsrestformat: 'json',
+      },
+    });
 
+    if (response.status === 200) {
+      const data = response.data;
+      // Process the data as needed here
+      console.log('Assignments:', data);
+    } else {
+      console.error('Failed to fetch data:', response.statusText);
+    }
+  } catch (error) {
+    console.error('Error:');
+  }
 }
 
-export function getAssignmentById() {
+export async function getAssignmentById(courseId: number) {
+  try {
+    const response = await axios.get(API_URL, {
+      params: {
+        wstoken: WS_TOKEN,
+        wsfunction: 'mod_assign_get_assignments',
+        moodlewsrestformat: 'json',
+        courseids: [courseId],
+      },
+    });
+
+    if (response.status === 200) {
+      const data = response.data;
+      // Process the data as needed here
+      console.log('Assignments:', data);
+    } else {
+      console.error('Failed to fetch data:', response.statusText);
+    }
+  } catch (error) {
+    console.error('Error:');
+  }
 
 }
 
