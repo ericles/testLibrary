@@ -158,8 +158,28 @@ export async function getCourseList() {
 
 }
 
-export function getCourseById() {
+export async function getCourseById(courseId: number) {
+  try {
+    const response = await axios.get(API_URL, {
+      params: {
+        wstoken: WS_TOKEN,
+        wsfunction: 'core_course_get_courses',
+        moodlewsrestformat: 'json',
+        options: [courseId],
+      },
+    });
 
+    if (response.status === 200) {
+      const data = response.data;
+      // Process the data as needed here
+      console.log('Courses data from API:', data);
+      return data;
+    } else {
+      console.error('Failed to fetch data from course:', response.statusText);
+    }
+  } catch (error) {
+    console.error('Error:');
+  }
 }
 
 export async function getAssignmentList() {
@@ -174,10 +194,8 @@ export async function getAssignmentList() {
 
     if (response.status === 200) {
       const data = response.data;
-      
       // Process the data as needed here
       return data;
-      console.log('Assignments data from API:', data);
     } else {
       console.error('Failed to fetch data for assignments:', response.statusText);
     }
@@ -186,7 +204,7 @@ export async function getAssignmentList() {
   }
 }
 
-export async function getAssignmentById(courseId: number) {
+export async function getAssignmentById(courseId: string) {
   try {
     const response = await axios.get(API_URL, {
       params: {
@@ -201,7 +219,6 @@ export async function getAssignmentById(courseId: number) {
       const data = response.data;      
       // Process the data as needed here
       return data;
-      console.log('Assignments:', data);
     } else {
       console.error('Failed to fetch data:', response.statusText);
     }
@@ -219,4 +236,4 @@ export function getRubricById() {
 
 }
 
-// getCourseList()
+
