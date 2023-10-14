@@ -160,12 +160,16 @@ export async function getCourseList() {
 
 export async function getCourseById(courseId: number) {
   try {
+    const options = {
+      ids: [courseId], // Aqui você pode adicionar os IDs desejados
+    };
+    
     const response = await axios.get(API_URL, {
       params: {
         wstoken: WS_TOKEN,
         wsfunction: 'core_course_get_courses',
         moodlewsrestformat: 'json',
-        options: [courseId],
+        options: JSON.stringify(options),
       },
     });
 

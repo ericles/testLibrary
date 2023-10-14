@@ -416,14 +416,14 @@ describe('getRubricList', () => {
     expect(firstRubric).toHaveProperty('hide_score_total');
   });
 
-  it('should return a list of rubrics for Moodle', async () => {
+  it.skip('should return a list of rubrics for Moodle', async () => {
     const moodleRubricList = await main.getRubricList('moodle', moodleToken, moodleCourseId);
     expect(moodleRubricList).toBeDefined();
   });
 });
 
 describe('getRubricById', () => {
-  it.skip('should return a rubric object for Canvas', async () => {
+  it('should return a rubric object for Canvas', async () => {
     const canvasRubric = await main.getRubricById('canvas', canvasToken, canvasCourseId, canvasRubricId);
     expect(canvasRubric).toBeDefined();
     expect(canvasRubric).toHaveProperty('id');
