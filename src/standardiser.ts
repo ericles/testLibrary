@@ -45,16 +45,20 @@ const moodleData = standardiseStudent('moodle', data);
 
 function standardiseStudent(lms: string, data: Record<string, any>): Record<string, any> {
     const canvasKeyMapping: Record<string, string> = {
-        id: 'canvasID',
-        name: 'name',
-        created_at: 'createdAt',
+        id: 'User ID',
+        name: 'Full Name',
+	last_name: 'Last Name',
+	first_name:'First Name',
+        email: 'Email',
       // Add more Canvas key mappings 
     };
   
     const moodleKeyMapping: Record<string, string> = {
-        id: 'moodleID',
-        userame: 'userName',
-        fullname:'name',
+        id: 'User ID',
+	fullname: 'Full Name',
+	lastname:'Last Name',
+	firstname:'First Name',
+        email:'Email',
       // Add more Moodle-specific key mappings here
     };
   
@@ -93,8 +97,8 @@ function standardiseStudent(lms: string, data: Record<string, any>): Record<stri
   }
 
 //Testing return data
-console.log('Canvas Data:', canvasData);
-console.log('Moodle Data:', moodleData);
+//console.log('Canvas Data:', canvasData);
+//console.log('Moodle Data:', moodleData);
 
 
 export function standardiseTeacher(){
