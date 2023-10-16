@@ -1,63 +1,18 @@
-// Example data object
-const data = {
-    id: 5,
-    username: 'jordan',
-    firstname: 'Jordan',
-    lastname: 'Junior',
-    fullname: 'Jordan Junior',
-    email: 'jordan1234@gmail.co.in.invalid',
-    department: '',
-    firstaccess: 1695791340,
-    lastaccess: 1696245102,
-    lastcourseaccess: 1696245108,
-    description: '',
-    descriptionformat: 1,
-    city: 'Melbourne',
-    country: 'AU',
-    profileimageurlsmall: 'https://secure.gravatar.com/avatar/e965915045aa1e554ad27c8e408b969c?s=35&d=mm',
-    profileimageurl: 'https://secure.gravatar.com/avatar/e965915045aa1e554ad27c8e408b969c?s=100&d=mm',
-    groups: [
-      {
-        id: 2,
-        name: 'MADS-Group2',
-        description: '<p>Group 2</p>',
-        descriptionformat: 1
-      }
-    ],
-    roles: [ { roleid: 5, name: '', shortname: 'student', sortorder: 0 } ],
-    enrolledcourses: [
-      {
-        id: 10,
-        fullname: 'Masters of IT (Data Science)',
-        shortname: 'MADS'
-      },
-      { id: 9, fullname: 'Masters of IT ', shortname: 'MAIT' },
-      {
-        id: 11,
-        fullname: 'Bachelors of Cloud Computing',
-        shortname: 'BCC'
-      }
-    ]
-};
-
-const canvasData = standardiseStudent('canvas', data);
-const moodleData = standardiseStudent('moodle', data);
-
-function standardiseStudent(lms: string, data: Record<string, any>): Record<string, any> {
+export function standardiseStudent(lms: string, data: Record<string, any>): Record<string, any> {
     const canvasKeyMapping: Record<string, string> = {
-        id: 'User ID',
+        id: 'Student ID',
         name: 'Full Name',
-	last_name: 'Last Name',
-	first_name:'First Name',
+	      last_name: 'Last Name',
+	      first_name:'First Name',
         email: 'Email',
       // Add more Canvas key mappings 
     };
   
     const moodleKeyMapping: Record<string, string> = {
-        id: 'User ID',
-	fullname: 'Full Name',
-	lastname:'Last Name',
-	firstname:'First Name',
+        id: 'Student ID',
+	      fullname: 'Full Name',
+	      lastname:'Last Name',
+	      firstname:'First Name',
         email:'Email',
       // Add more Moodle-specific key mappings here
     };
@@ -96,14 +51,11 @@ function standardiseStudent(lms: string, data: Record<string, any>): Record<stri
     /* return replaceKeys(data); */
   }
 
-//Testing return data
-//console.log('Canvas Data:', canvasData);
-//console.log('Moodle Data:', moodleData);
 
 
 export function standardiseTeacher(lms: string, data: Record<string, any>): Record<string, any> {
   const canvasKeyMapping: Record<string, string> = {
-    id: 'User ID',
+    id: 'Teacher ID',
     name: 'Full Name',
 last_name: 'Last Name',
 first_name:'First Name',
@@ -112,7 +64,7 @@ first_name:'First Name',
 };
 
 const moodleKeyMapping: Record<string, string> = {
-    id: 'User ID',
+    id: 'Teacher ID',
 fullname: 'Full Name',
 lastname:'Last Name',
 firstname:'First Name',
