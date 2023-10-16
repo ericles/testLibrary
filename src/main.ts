@@ -27,7 +27,7 @@ export async function getStudentList(lms: string, courseId: string, token: strin
       break;
   }
 
-  return data;
+  return standardiser.standardiseStudent(lms, data);
 }
 
 export async function getStudentById(lms: string, courseId: string, token: string, studentId: string) {
@@ -53,7 +53,7 @@ export async function getStudentById(lms: string, courseId: string, token: strin
       break;
   }
 
-  return data;
+  return standardiser.standardiseStudent(lms, data);
 }
 
 export async function getTeacherList(lms: string, courseId: string, token: string) {
@@ -80,7 +80,7 @@ export async function getTeacherList(lms: string, courseId: string, token: strin
       break;
   }
 
-  return data;
+  return standardiser.standardiseTeacher(lms, data);
 }
 
 export async function getTeacherById(lms: string, courseId: string, token: string, teacherId: string) {
@@ -107,7 +107,7 @@ export async function getTeacherById(lms: string, courseId: string, token: strin
       break;
   }
 
-  return data;
+  return standardiser.standardiseTeacher(lms, data);
 }
 
 export async function getCourseList(lms: string, token: string) {
@@ -134,7 +134,7 @@ export async function getCourseList(lms: string, token: string) {
       break;
   }
 
-  return data;
+  return standardiser.standardiseCourse(lms, data);
 }
 
 
@@ -162,7 +162,7 @@ export async function getCourseById(lms: string, token: string, courseId: string
       break;
   }
 
-  return data;
+  return standardiser.standardiseCourse(lms, data);
 }
 
 export async function getAssignmentList(lms: string, token: string, courseId: string) {
@@ -189,7 +189,7 @@ export async function getAssignmentList(lms: string, token: string, courseId: st
       break;
   }
 
-  return data;
+  return standardiser.standardiseAssignment(lms, data);
 }
 
 export async function getAssignmentById(lms: string, token: string, courseId: string, assignmentId: string) {
@@ -216,7 +216,7 @@ export async function getAssignmentById(lms: string, token: string, courseId: st
       break;
   }
 
-  return data;
+  return standardiser.standardiseAssignment(lms, data);
 }
 
 export async function getRubricList(lms: string, token: string, courseId: string) {
