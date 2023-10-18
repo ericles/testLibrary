@@ -25,7 +25,7 @@ export function standardiseStudent(lms: string, data: Record<string, any>): Reco
     const standardizedData = replaceKeys(data, keyMapping);
     console.log("standardizedData =======", standardizedData);
 
-    const result = addMissingKeys(standardizedData, keyMapping);
+    const result = addMissingKeys(data, keyMapping);
     console.log("result =======", result);
 
     return result;
