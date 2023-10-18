@@ -25,7 +25,7 @@ export function standardiseStudent(lms: string, data: Record<string, any>): Reco
     const standardizedData = replaceKeys(data, keyMapping);
     console.log("standardizedData =======", standardizedData);
 
-    const result = removeUnmappedKeys(standardizedData, keyMapping);
+    const result = addMissingKeys(standardizedData, keyMapping);
     console.log("result =======", result);
 
     return result;
@@ -38,7 +38,7 @@ function replaceKeys(obj: any, keyMapping: Record<string, string>): any {
     const newData: Record<string, any> = {};
 
     for (const key in obj) {
-      const newKey = key;
+      const newKey = keyMapping[key];
       if (keyMapping[key] !== undefined)
       {
         const newKey = keyMapping[key]; 
@@ -82,16 +82,17 @@ function replaceKeys2(obj: Record<string, any>, keyMapping: Record<string, strin
   return newData;
 }
 
-function removeUnmappedKeys(obj: Record<string, any>, keyMapping: Record<string, string>): Record<string, any> {
-  const filteredData: Record<string, any> = {};
+function addMissingKeys(originalData: Record<string, any>, keyMapping: Record<string, string>): Record<string, any> {
+  const updatedData: Record<string, any> = { ...originalData }; // Copia o JSON original
 
-  for (const key in obj) {
-    if (key in keyMapping) {
-      filteredData[key] = obj[key];
+  for (const key in keyMapping) {
+    if (!(key in updatedData)) {
+      // Se a chave do keyMapping não existe no JSON original, adicione-a com valor null
+      updatedData[key] = null;
     }
   }
 
-  return filteredData;
+  return updatedData;
 }
 
 
