@@ -20,39 +20,33 @@ export function standardiseStudent(lms: string, data: Record<string, any>): Reco
     };
   
     const keyMapping = lms === 'canvas' ? canvasKeyMapping : moodleKeyMapping;
-  
-    console.log("keyMapping =======", keyMapping);
-    const replaceKeys = (obj: Record<string, any>): Record<string, any> => {
+    
+      const replaceKeys = (obj: Record<string, any>): Record<string, any> => {
       const newData: Record<string, any> = {};
   
       for (const key in obj) {
-        const newKey = keyMapping[key] || key; // Use the mapped key if available, otherwise keep the key as is
+        const newKey = keyMapping[key]; // Use the mapped key if available, otherwise skip the field
   
-        if (Array.isArray(obj[key])) {
-          // If the value is an array, recursively process each element
-          newData[newKey] = obj[key].map((item: any) => replaceKeys(item));
-        } else if (typeof obj[key] === 'object' && obj[key] !== null) {
-          // If the value is an object, recursively process it
-          newData[newKey] = replaceKeys(obj[key]);
-        } else {
-          newData[newKey] = obj[key];
+        if (newKey) {
+          if (Array.isArray(obj[key])) {
+            // If the value is an array, recursively process each element
+            newData[newKey] = obj[key].map((item: any) => replaceKeys(item));
+          } else if (typeof obj[key] === 'object' && obj[key] !== null) {
+            // If the value is an object, recursively process it
+            newData[newKey] = replaceKeys(obj[key]);
+          } else {
+            newData[newKey] = obj[key];
+          }
         }
       }
-      
-      console.log("newData =======", newData);
+
+      console.log("newData =======", newData);  
       return newData;
     };
-
+  
     const standardizedData = replaceKeys(data);
-    const result: Record<string, any> = {};
-    for (const key in standardizedData) {
-        if (key !== keyMapping[key]) {
-          result[key] = standardizedData[key];
-        }
-      }
-      console.log("result =======", result);
-      return result;
-    /* return replaceKeys(data); */
+    console.log("standardizedData =======", standardizedData);  
+    return standardizedData;
   }
 
 
