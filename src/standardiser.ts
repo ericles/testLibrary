@@ -44,6 +44,8 @@ export function standardiseStudent(lms: string, data: Record<string, any>): Reco
     };
 
     const standardizedData = replaceKeys(data);
+    console.log("standardizedData =======", standardizedData);
+
     const result: Record<string, any> = {};
     for (const key in standardizedData) {
         if (key !== keyMapping[key]) {
