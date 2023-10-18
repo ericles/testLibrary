@@ -189,7 +189,7 @@ export async function getAssignmentList(lms: string, token: string, courseId: st
       break;
   }
 
-  return null
+  return standardiser.standardiseAssignment(lms, data);
 }
 
 export async function getAssignmentById(lms: string, token: string, courseId: string, assignmentId: string) {
@@ -216,7 +216,7 @@ export async function getAssignmentById(lms: string, token: string, courseId: st
       break;
   }
 
-  return null;
+  return standardiser.standardiseAssignment(lms, data);;
 }
 
 export async function getRubricList(lms: string, token: string, courseId: string) {

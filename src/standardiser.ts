@@ -87,6 +87,39 @@ const keyMapping = lms === 'canvas' ? canvasKeyMapping : moodleKeyMapping;
     return standardizedData;
 }
 
+export function standardiseAssignment(lms: string, data: Record<string, any>): Record<string, any> {
+  const canvasKeyMapping: Record<string, string> = {
+    id: 'AssignmentID',
+    course_id: 'CourseID',
+    name: 'AssignmentName',
+    due_at: 'DueDate',
+    description:'Intro',
+  // Add more Canvas key mappings 
+};
+
+const moodleKeyMapping: Record<string, string> = {
+  id: 'AssignmentID',
+  course: 'CourseID',
+  name: 'AssignmentName',
+  duedate: 'DueDate',
+  description:'Intro',
+  // Add more Moodle-specific key mappings here
+};
+
+  const keyMapping = lms === 'canvas' ? canvasKeyMapping : moodleKeyMapping;
+  console.log("keyMapping  Assignment =======", keyMapping);
+
+  const standardizedData = replaceKeys(data, keyMapping);
+  console.log("standardizedData =======", standardizedData);
+
+  return standardizedData;
+
+}
+
+export function standardiseRubric(){
+
+}
+
 function replaceKeys(obj: any, keyMapping: Record<string, string>): any {
   if (Array.isArray(obj)) {
     return obj.map((item) => replaceKeys(item, keyMapping));
