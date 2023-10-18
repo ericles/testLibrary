@@ -89,6 +89,7 @@ const keyMapping = lms === 'canvas' ? canvasKeyMapping : moodleKeyMapping;
 
 export function standardiseAssignment(lms: string, data: Record<string, any>): Record<string, any> {
   console.log("============== Assignment =======");
+  console.log("============== data =======", data);
   const canvasKeyMapping: Record<string, string> = {
     id: 'AssignmentID',
     course_id: 'CourseID',
