@@ -1,5 +1,6 @@
 export function standardiseStudent(lms: string, data: Record<string, any>): Record<string, any> {
   console.log("LMS =======", lms);
+  console.log("original =======", data);
     const canvasKeyMapping: Record<string, string> = {
         id: 'StudentID',
         name: 'FullName',
@@ -20,6 +21,7 @@ export function standardiseStudent(lms: string, data: Record<string, any>): Reco
   
     const keyMapping = lms === 'canvas' ? canvasKeyMapping : moodleKeyMapping;
   
+    console.log("keyMapping =======", keyMapping);
     const replaceKeys = (obj: Record<string, any>): Record<string, any> => {
       const newData: Record<string, any> = {};
   

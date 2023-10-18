@@ -110,7 +110,7 @@ describe('getStudentById', () => {
     //is moodleStudent defined?    
     expect(moodleStudent).toBeDefined();
     // specific assertions for moodle:
-    console.log(moodleStudent);
+    // console.log(moodleStudent);
     expect(moodleStudent).toHaveProperty('username');
     expect(moodleStudent).toHaveProperty('firstaccess');
     expect(moodleStudent).toHaveProperty('fullname');
@@ -453,7 +453,7 @@ describe("getCourseList", () => {
   });
   it('should return a course object for Moodle', async () => {
     const moodleCourseList = await main.getCourseList('moodle', moodleToken);
-    console.log("MOODLE COURSE LIST" + JSON.stringify(moodleCourseList));
+    //console.log("MOODLE COURSE LIST" + JSON.stringify(moodleCourseList));
     expect(moodleCourseList).toBeDefined();
   });
 });
@@ -461,12 +461,12 @@ describe("getCourseList", () => {
 describe("getCourseById", () => {
   it('should return a course by id object for Canvas', async () => {
     const canvasCourseList = await main.getCourseById('canvas', canvasToken, canvasCourseId);
-    console.log("CANVAS COURSE LIST" + JSON.stringify(canvasCourseList));
+    //console.log("CANVAS COURSE LIST" + JSON.stringify(canvasCourseList));
     expect(canvasCourseList).toBeDefined();
   });
   it('should return a course object for Moodle', async () => {
     const moodleCourseList = await main.getCourseById('moodle', moodleToken, moodleCourseId);
-    console.log("MOODLE COURSE LIST" + JSON.stringify(moodleCourseList));
+    //console.log("MOODLE COURSE LIST" + JSON.stringify(moodleCourseList));
     expect(moodleCourseList).toBeDefined();
   });
 });
