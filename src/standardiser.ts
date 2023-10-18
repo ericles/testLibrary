@@ -22,7 +22,7 @@ export function standardiseStudent(lms: string, data: Record<string, any>): Reco
     const keyMapping = lms === 'canvas' ? canvasKeyMapping : moodleKeyMapping;
     console.log("keyMapping =======", keyMapping);
 
-    const standardizedData = replaceKeys(data, keyMapping);
+    const standardizedData = transformData(data, keyMapping);
     console.log("standardizedData =======", standardizedData);
 
     const result: Record<string, any> = {};
@@ -35,17 +35,18 @@ export function standardiseStudent(lms: string, data: Record<string, any>): Reco
     return result;
 }
 
-  function replaceKeys(data: Record<string, any>, keyMapping: Record<string, string>): Record<string, any> {
-    const newData: Record<string, any> = {};
 
-    for (const key in keyMapping) {
-      const newKey = keyMapping[key];
-      newData[newKey] = data[key] !== undefined ? data[key] : null;
-    }
+function transformData(originalData: Record<string, any>, keyMapping: Record<string, string>): Record<string, any> {
+  const transformedItem: Record<string, any> = {};
 
-  console.log("newData =======", newData);
-  return newData;
+  for (const key in keyMapping) {
+    const newKey = keyMapping[key];
+    transformedItem[newKey] = originalData[key] !== undefined ? originalData[key] : null;
   }
+
+    console.log("transformedItem =======", transformedItem);
+    return transformedItem;
+}
 
 
 
