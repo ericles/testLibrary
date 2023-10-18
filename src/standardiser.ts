@@ -25,7 +25,7 @@ export function standardiseStudent(lms: string, data: Record<string, any>): Reco
     const standardizedData = replaceKeys(data, keyMapping);
     console.log("standardizedData =======", standardizedData);
 
-    const result = addMissingKeys(data, keyMapping);
+    const result = addMissingKeys(standardizedData, invertMapping(keyMapping));
     console.log("result =======", result);
 
     return result;
@@ -93,6 +93,14 @@ function addMissingKeys(originalData: Record<string, any>, keyMapping: Record<st
   }
 
   return updatedData;
+}
+
+function invertMapping(mapping: Record<string, string>): Record<string, string> {
+  const invertedMapping: Record<string, string> = {};
+  for (const key in mapping) {
+    invertedMapping[mapping[key]] = key;
+  }
+  return invertedMapping;
 }
 
 
