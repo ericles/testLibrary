@@ -22,7 +22,7 @@ export function standardiseStudent(lms: string, data: Record<string, any>): Reco
     const keyMapping = lms === 'canvas' ? canvasKeyMapping : moodleKeyMapping;
     console.log("keyMapping =======", keyMapping);
 
-    const standardizedData = transformData(data, keyMapping);
+    const standardizedData = replaceKeys(data, keyMapping);
     console.log("standardizedData =======", standardizedData);
 
     const result: Record<string, any> = {};
@@ -36,16 +36,30 @@ export function standardiseStudent(lms: string, data: Record<string, any>): Reco
 }
 
 
-function transformData(originalData: Record<string, any>, keyMapping: Record<string, string>): Record<string, any> {
-  const transformedItem: Record<string, any> = {};
+function replaceKeys(obj: Record<string, any>, keyMapping: Record<string, string>): Record<string, any> {
+  const newData: Record<string, any> = {};
 
-  for (const key in keyMapping) {
-    const newKey = keyMapping[key];
-    transformedItem[newKey] = originalData[key] !== undefined ? originalData[key] : null;
+  for (const key in obj) {
+    const newKey = keyMapping[key] || key; // Use the mapped key if available, otherwise keep the key as is
+
+    if (Array.isArray(obj[key])) {
+      // If the value is an array, recursively process each element
+      newData[newKey] = obj[key].map((item: any) => {
+        if (typeof item === 'object' && item !== null) {
+          return replaceKeys(item, keyMapping);
+        } else {
+          return item;
+        }
+      });
+    } else if (typeof obj[key] === 'object' && obj[key] !== null) {
+      // If the value is an object, recursively process it
+      newData[newKey] = replaceKeys(obj[key], keyMapping);
+    } else {
+      newData[newKey] = obj[key];
+    }
   }
 
-    console.log("transformedItem =======", transformedItem);
-    return transformedItem;
+  return newData;
 }
 
 
