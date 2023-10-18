@@ -25,13 +25,9 @@ export function standardiseStudent(lms: string, data: Record<string, any>): Reco
     const standardizedData = replaceKeys(data, keyMapping);
     console.log("standardizedData =======", standardizedData);
 
-    const result: Record<string, any> = {};
-    for (const key in standardizedData) {
-      if (key !== keyMapping[key]) {
-        result[key] = standardizedData[key];
-      }
-    }
+    const result = removeUnmappedKeys(standardizedData, keyMapping);
     console.log("result =======", result);
+    
     return result;
 }
 
@@ -60,6 +56,18 @@ function replaceKeys(obj: Record<string, any>, keyMapping: Record<string, string
   }
 
   return newData;
+}
+
+function removeUnmappedKeys(obj: Record<string, any>, keyMapping: Record<string, string>): Record<string, any> {
+  const filteredData: Record<string, any> = {};
+
+  for (const key in obj) {
+    if (key in keyMapping) {
+      filteredData[key] = obj[key];
+    }
+  }
+
+  return filteredData;
 }
 
 
