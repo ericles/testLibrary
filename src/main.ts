@@ -179,8 +179,8 @@ export async function getAssignmentList(lms: string, token: string, courseId: st
       break;
     case 'moodle':
       try{
-        data = await moodle.getAssignmentList(); //just for testing
-        //console.log("APIgetAssignmentListMoodle", data);
+        data = await moodle.getAssignmentList(); 
+        console.log("XXXXXXXXXXXX APIgetAssignmentListMoodle", data);
       } catch (error) {
         console.error("Error in getAssignmentListMoodle:", error);
       }
