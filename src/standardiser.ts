@@ -29,6 +29,7 @@ export function standardiseStudent(lms: string, data: Record<string, any>): Reco
 }
 
 export function standardiseTeacher(lms: string, data: Record<string, any>): Record<string, any> {
+  console.log("---------------- Teacher =======");
   const canvasKeyMapping: Record<string, string> = {
     id: 'TeacherID',
     name: 'FullName',
