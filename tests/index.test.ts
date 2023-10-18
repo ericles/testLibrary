@@ -147,7 +147,7 @@ describe('getStudentList', () => {
      expect(firstAssignment).toHaveProperty('DueDate');
      expect(firstAssignment).toHaveProperty('Intro');
       });
-   it('should return a list of assignments for Moodle', async () => {
+   it.skip('should return a list of assignments for Moodle', async () => {
      const moodleAssignmentList = await main.getAssignmentList('moodle', moodleToken, moodleCourseId);
      expect(moodleAssignmentList).toBeDefined();
      expect(Array.isArray(moodleAssignmentList)).toBe(true);
@@ -168,7 +168,7 @@ describe('getStudentList', () => {
      expect(canvasAssignment).toHaveProperty('DueDate');
      expect(canvasAssignment).toHaveProperty('Intro');
      });
-   it.skip('should return an assignment object for Moodle', async () => {
+   it('should return an assignment object for Moodle', async () => {
      const moodleAssignment = await main.getAssignmentById('moodle', moodleCourseId, moodleToken, moodleAssignmentId);
      expect(moodleAssignment).toBeDefined();
      expect(moodleAssignment).toHaveProperty('AssignmentID');
