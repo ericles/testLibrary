@@ -40,7 +40,7 @@ function replaceKeys(obj: any, keyMapping: Record<string, string>): any {
     for (const key in obj) {
       const newKey = keyMapping[key]; // Use the mapped key if available, otherwise keep the key as is
 
-      newData[newKey] = replaceKeys(obj[key], keyMapping);
+      newData[newKey] = obj[key] !== undefined ? obj[key] : null;
     }
 
     return newData;
