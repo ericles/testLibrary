@@ -26,7 +26,9 @@ export function standardiseStudent(lms: string, data: Record<string, any>): Reco
   
       for (const key in obj) {
         const newKey = keyMapping[key]; // Use the mapped key if available, otherwise skip the field
-  
+        console.log("keyMapping[key] =======", keyMapping[key]);  
+        console.log("newKey =======", newKey);  
+
         if (newKey) {
           if (Array.isArray(obj[key])) {
             // If the value is an array, recursively process each element
