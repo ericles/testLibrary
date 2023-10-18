@@ -20,41 +20,40 @@ export function standardiseStudent(lms: string, data: Record<string, any>): Reco
     };
   
     const keyMapping = lms === 'canvas' ? canvasKeyMapping : moodleKeyMapping;
-  
     console.log("keyMapping =======", keyMapping);
-    const replaceKeys = (obj: Record<string, any>): Record<string, any> => {
-      const newData: Record<string, any> = {};
-  
-      for (const key in obj) {
-        const newKey = keyMapping[key]; // Use the mapped key if available, otherwise keep the key as is
-  
-        if (Array.isArray(obj[key])) {
-          // If the value is an array, recursively process each element
-          newData[newKey] = obj[key].map((item: any) => replaceKeys(item));
-        } else if (typeof obj[key] === 'object' && obj[key] !== null) {
-          // If the value is an object, recursively process it
-          newData[newKey] = replaceKeys(obj[key]);
-        } else {
-          newData[newKey] = obj[key];
-        }
-      }
-      
-      console.log("newData =======", newData);
-      return newData;
-    };
 
-    const standardizedData = replaceKeys(data);
+    const standardizedData = replaceKeys(data, keyMapping);
     console.log("standardizedData =======", standardizedData);
 
     const result: Record<string, any> = {};
     for (const key in standardizedData) {
-        if (key !== keyMapping[key]) {
-          result[key] = standardizedData[key];
-        }
+      if (key !== keyMapping[key]) {
+        result[key] = standardizedData[key];
       }
-      console.log("result =======", result);
-      return result;
-    /* return replaceKeys(data); */
+    }
+    console.log("result =======", result);
+    return result;
+}
+
+  function replaceKeys(obj: Record<string, any>, keyMapping: Record<string, string>): Record<string, any> {
+    const newData: Record<string, any> = {};
+  
+    for (const key in obj) {
+      const newKey = keyMapping[key] || key; // Use the mapped key if available, otherwise keep the key as is
+  
+      if (Array.isArray(obj[key])) {
+        // If the value is an array, recursively process each element
+        newData[newKey] = obj[key].map((item: any) => replaceKeys(item, keyMapping));
+      } else if (typeof obj[key] === 'object' && obj[key] !== null) {
+        // If the value is an object, recursively process it
+        newData[newKey] = replaceKeys(obj[key], keyMapping);
+      } else {
+        newData[newKey] = obj[key];
+      }
+    }
+  
+    console.log("newData =======", newData);
+    return newData;
   }
 
 
@@ -184,39 +183,23 @@ const moodleKeyMapping: Record<string, string> = {
   // Add more Moodle-specific key mappings here
 };
 
-const keyMapping = lms === 'canvas' ? canvasKeyMapping : moodleKeyMapping;
+  const keyMapping = lms === 'canvas' ? canvasKeyMapping : moodleKeyMapping;
+  console.log("keyMapping =======", keyMapping);
 
-const replaceKeys = (obj: Record<string, any>): Record<string, any> => {
-  const newData: Record<string, any> = {};
+  const standardizedData = replaceKeys(data, keyMapping);
+  console.log("standardizedData =======", standardizedData);
 
-  for (const key in obj) {
-    const newKey = keyMapping[key] || key; // Use the mapped key if available, otherwise keep the key as is
-
-    if (Array.isArray(obj[key])) {
-      // If the value is an array, recursively process each element
-      newData[newKey] = obj[key].map((item: any) => replaceKeys(item));
-    } else if (typeof obj[key] === 'object' && obj[key] !== null) {
-      // If the value is an object, recursively process it
-      newData[newKey] = replaceKeys(obj[key]);
-    } else {
-      newData[newKey] = obj[key];
-    }
-  }
-
-  return newData;
-};
-
-const standardizedData = replaceKeys(data);
-const result: Record<string, any> = {};
-for (const key in standardizedData) {
+  const result: Record<string, any> = {};
+  for (const key in standardizedData) {
     if (key !== keyMapping[key]) {
       result[key] = standardizedData[key];
     }
   }
-
+  console.log("result =======", result);
   return result;
 }
 
 export function standardiseRubric(){
 
 }
+
