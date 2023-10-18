@@ -38,27 +38,32 @@ export function standardiseStudent(lms: string, data: Record<string, any>): Reco
   function replaceKeys(obj: Record<string, any>, keyMapping: Record<string, string>): Record<string, any> {
     const newData: Record<string, any> = {};
   
-    for (const key in keyMapping) {
-      const newKey = keyMapping[key];
-  
-      if (key in obj) {
-        if (Array.isArray(obj[key])) {
-          // If the value is an array, recursively process each element
-          newData[newKey] = obj[key].map((item: any) => replaceKeys(item, keyMapping));
-        } else if (typeof obj[key] === 'object' && obj[key] !== null) {
-          // If the value is an object, recursively process it
-          newData[newKey] = replaceKeys(obj[key], keyMapping);
-        } else {
-          newData[newKey] = obj[key];
-        }
+      // Copia as chaves do JSON original para o newData
+  for (const key in obj) {
+    newData[key] = obj[key];
+  }
+
+  // Aplica as chaves mapeadas com seus valores
+  for (const key in keyMapping) {
+    const newKey = keyMapping[key];
+    if (newKey in obj) {
+      if (Array.isArray(obj[newKey])) {
+        // If the value is an array, recursively process each element
+        newData[newKey] = obj[newKey].map((item: any) => replaceKeys(item, keyMapping));
+      } else if (typeof obj[newKey] === 'object' && obj[newKey] !== null) {
+        // If the value is an object, recursively process it
+        newData[newKey] = replaceKeys(obj[newKey], keyMapping);
       } else {
-        // If the key doesn't exist in the original object, set a default value
-        newData[newKey] = Array.isArray(newData[newKey]) ? [] : null;
+        newData[newKey] = obj[newKey];
       }
+    } else {
+      // If the key doesn't exist in the original object, set a default value
+      newData[newKey] = null;
     }
-  
-    console.log("newData =======", newData);
-    return newData;
+  }
+
+  console.log("newData =======", newData);
+  return newData;
   }
 
 
