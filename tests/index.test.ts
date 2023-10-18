@@ -23,6 +23,7 @@ describe('getStudentList', () => {
   // getstudentlistcanvas
   it('should return a list of students for Canvas', async () => {
     const canvasStudentList = await main.getStudentList('canvas', canvasCourseId, canvasToken);
+    console.log("canvasStudentList ==== " + JSON.stringify(canvasStudentList));
     // is canvasStudentList defined?
     expect(canvasStudentList).toBeDefined();
     // is it array?
@@ -42,6 +43,7 @@ describe('getStudentList', () => {
 
   it('should return a list of students for Moodle', async () => {
     const moodleStudentList = await main.getStudentList('moodle', moodleCourseId);
+    console.log("moodleStudentList ==== " + JSON.stringify(moodleStudentList));
     // is moodleStudentList defined?
     expect(moodleStudentList).toBeDefined();
     // is it array?
