@@ -38,17 +38,22 @@ export function standardiseStudent(lms: string, data: Record<string, any>): Reco
   function replaceKeys(obj: Record<string, any>, keyMapping: Record<string, string>): Record<string, any> {
     const newData: Record<string, any> = {};
   
-    for (const key in obj) {
-      const newKey = keyMapping[key] || key; // Use the mapped key if available, otherwise keep the key as is
+    for (const key in keyMapping) {
+      const newKey = keyMapping[key];
   
-      if (Array.isArray(obj[key])) {
-        // If the value is an array, recursively process each element
-        newData[newKey] = obj[key].map((item: any) => replaceKeys(item, keyMapping));
-      } else if (typeof obj[key] === 'object' && obj[key] !== null) {
-        // If the value is an object, recursively process it
-        newData[newKey] = replaceKeys(obj[key], keyMapping);
+      if (key in obj) {
+        if (Array.isArray(obj[key])) {
+          // If the value is an array, recursively process each element
+          newData[newKey] = obj[key].map((item: any) => replaceKeys(item, keyMapping));
+        } else if (typeof obj[key] === 'object' && obj[key] !== null) {
+          // If the value is an object, recursively process it
+          newData[newKey] = replaceKeys(obj[key], keyMapping);
+        } else {
+          newData[newKey] = obj[key];
+        }
       } else {
-        newData[newKey] = obj[key];
+        // If the key doesn't exist in the original object, set a default value
+        newData[newKey] = Array.isArray(newData[newKey]) ? [] : null;
       }
     }
   
