@@ -31,8 +31,25 @@ export function standardiseStudent(lms: string, data: Record<string, any>): Reco
     return result;
 }
 
+function replaceKeys(obj: any, keyMapping: Record<string, string>): any {
+  if (Array.isArray(obj)) {
+    return obj.map((item) => replaceKeys(item, keyMapping));
+  } else if (typeof obj === 'object' && obj !== null) {
+    const newData: Record<string, any> = {};
 
-function replaceKeys(obj: Record<string, any>, keyMapping: Record<string, string>): Record<string, any> {
+    for (const key in obj) {
+      const newKey = keyMapping[key] || key; // Use the mapped key if available, otherwise keep the key as is
+
+      newData[newKey] = replaceKeys(obj[key], keyMapping);
+    }
+
+    return newData;
+  } else {
+    return obj;
+  }
+}
+
+function replaceKeys2(obj: Record<string, any>, keyMapping: Record<string, string>): Record<string, any> {
   const newData: Record<string, any> = {};
 
   for (const key in obj) {
