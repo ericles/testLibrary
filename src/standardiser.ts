@@ -1,4 +1,5 @@
 export function standardiseStudent(lms: string, data: Record<string, any>): Record<string, any> {
+  console.log("LMS =======", lms);
     const canvasKeyMapping: Record<string, string> = {
         id: 'StudentID',
         name: 'FullName',
@@ -35,7 +36,8 @@ export function standardiseStudent(lms: string, data: Record<string, any>): Reco
           newData[newKey] = obj[key];
         }
       }
-  
+      
+      console.log("newData =======", newData);
       return newData;
     };
 
@@ -46,7 +48,7 @@ export function standardiseStudent(lms: string, data: Record<string, any>): Reco
           result[key] = standardizedData[key];
         }
       }
-    
+      console.log("result =======", result);
       return result;
     /* return replaceKeys(data); */
   }
