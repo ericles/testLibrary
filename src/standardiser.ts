@@ -38,7 +38,7 @@ function replaceKeys(obj: any, keyMapping: Record<string, string>): any {
     const newData: Record<string, any> = {};
 
     for (const key in obj) {
-
+      const newKey = keyMapping[key];
       if (keyMapping[key] !== undefined)
       {
         const newKey = keyMapping[key]; 
@@ -46,7 +46,7 @@ function replaceKeys(obj: any, keyMapping: Record<string, string>): any {
       }
       else
       {
-        const newKey = null;
+        newData[newKey] = null;
       }  
     }
 
