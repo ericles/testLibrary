@@ -50,7 +50,7 @@ function replaceKeys(obj: any, keyMapping: Record<string, string>): any {
       }  
     }
 
-    return newData;
+    return addMissingKeys(newData, invertMapping(keyMapping));
   } else {
     return obj;
   }
