@@ -117,7 +117,7 @@ export async function getCourseList(lms: string, token: string) {
     case 'canvas':
       try {
         data = await canvas.getCourseList(token);
-        console.log("getCourseListCanvas", data);
+        //console.log("getCourseListCanvas", data);
       } catch (error) {
         console.error("Error in getCourseListCanvas:", error);
       }
@@ -125,7 +125,7 @@ export async function getCourseList(lms: string, token: string) {
       case 'moodle':
       try {
         data = await moodle.getCourseList();
-        console.log("API getCourseListMoodle", data);
+        //console.log("API getCourseListMoodle", data);
       } catch (error) {
         console.error("Error in getCourseListMoodle:", error);
       }
@@ -153,7 +153,7 @@ export async function getCourseById(lms: string, token: string, courseId: string
       case 'moodle':
       try {
         data = await moodle.getCourseById(courseId);
-        console.log("getCourseByIdMoodle", data);
+        //console.log("getCourseByIdMoodle", data);
       } catch (error) {
         console.error("Error in getCourseByIdMoodle:", error);
       }
@@ -179,8 +179,8 @@ export async function getAssignmentList(lms: string, token: string, courseId: st
       break;
     case 'moodle':
       try{
-        data = await moodle.getAssignmentList(); //just for testing
-        console.log("APIgetAssignmentListMoodle", data);
+        data = await moodle.getAssignmentList(); 
+        console.log("XXXXXXXXXXXX APIgetAssignmentListMoodle", data);
       } catch (error) {
         console.error("Error in getAssignmentListMoodle:", error);
       }
@@ -207,7 +207,7 @@ export async function getAssignmentById(lms: string, token: string, courseId: st
       case 'moodle':
         try{
           data = await moodle.getAssignmentById(assignmentId); //just for testing
-          console.log("getAssignmentListMoodle", data);
+          //console.log("getAssignmentListMoodle", data);
         } catch (error) {
           console.error("Error in getAssignmentListMoodle:", error);
         }
@@ -216,7 +216,7 @@ export async function getAssignmentById(lms: string, token: string, courseId: st
       break;
   }
 
-  return standardiser.standardiseAssignment(lms, data);
+  return standardiser.standardiseAssignment(lms, data);;
 }
 
 export async function getRubricList(lms: string, token: string, courseId: string) {
