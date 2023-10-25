@@ -9,6 +9,7 @@ const canvasTeacherId = "109412162";
 const canvasAssignmentId = "40873657";
 const canvasRubricId = "1743469";
 
+const moodleAPIURL = "https://edlibrary.moodlecloud.com/webservice/rest/server.php?";
 const moodleToken = "73f5455ea3cff11ee966f6d19550e0e2";
 const moodleCourseId = "10";
 const moodleStudentId = "5";

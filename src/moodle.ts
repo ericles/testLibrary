@@ -1,7 +1,15 @@
 const axios = require('axios'); // Use require instead of import
 
-const API_URL = 'https://edlibrary.moodlecloud.com/webservice/rest/server.php?';
-const WS_TOKEN = '73f5455ea3cff11ee966f6d19550e0e2';
+let API_URL = "";
+let WS_TOKEN = "";
+
+export function setToken(token: string){
+  WS_TOKEN = token;
+}
+
+export function setApiURL(url: string){
+  API_URL = url;
+}
 
 export async function getStudentList(courseId: string) {
   try {
