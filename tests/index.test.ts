@@ -17,12 +17,14 @@ const moodleAssignmentId = "9"; //test
 const moodleRubricId = "moodle";
 
 
+main.setCanvasToken(canvasToken);
+main.setMoodleToken(moodleToken);
 
 describe('getStudentList', () => {
 
   // getstudentlistcanvas
   it('should return a list of students for Canvas', async () => {
-    const canvasStudentList = await main.getStudentList('canvas', canvasCourseId, canvasToken);
+    const canvasStudentList = await main.getStudentList('canvas', canvasCourseId);
     console.log("canvasStudentList ====================== " + JSON.stringify(canvasStudentList));
     // is canvasStudentList defined?
     expect(canvasStudentList).toBeDefined();
@@ -60,7 +62,7 @@ describe('getStudentList', () => {
  //getstudentbyID
  describe('getStudentById', () => {
    it('should return a student object for Canvas', async () => {
-     const canvasStudent = await main.getStudentById('canvas', canvasCourseId, canvasToken, canvasStudentId);
+     const canvasStudent = await main.getStudentById('canvas', canvasCourseId, canvasStudentId);
      //is canvasStudent defined?
      expect(canvasStudent).toBeDefined();
      // specific assertions for Canvas:
@@ -71,7 +73,7 @@ describe('getStudentList', () => {
     expect(canvasStudent).toHaveProperty('Email');
    });
    it('should return a student object for Moodle', async () => {
-     const moodleStudent = await main.getStudentById('moodle', moodleCourseId, moodleToken, moodleStudentId);
+     const moodleStudent = await main.getStudentById('moodle', moodleCourseId, moodleStudentId);
      //is moodleStudent defined?    
      expect(moodleStudent).toBeDefined();
      // specific assertions for moodle:
@@ -85,7 +87,7 @@ describe('getStudentList', () => {
  });
  describe('getTeacherList', () => {
    it('should return a list of teachers for Canvas', async () => {
-     const canvasTeacherList = await main.getTeacherList('canvas', canvasCourseId, canvasToken);
+     const canvasTeacherList = await main.getTeacherList('canvas', canvasCourseId);
      expect(canvasTeacherList).toBeDefined();
      expect(Array.isArray(canvasTeacherList)).toBe(true);
      const firstTeacher = canvasTeacherList[0];
@@ -96,7 +98,7 @@ describe('getStudentList', () => {
      expect(firstTeacher).toHaveProperty('Email');
    });
    it('should return a teacher object for Moodle', async () => {
-     const moodleTeacher = await main.getTeacherById('moodle', moodleCourseId, moodleToken, moodleTeacherId);
+     const moodleTeacher = await main.getTeacherById('moodle', moodleCourseId, moodleTeacherId);
      // Check if moodleTeacher is defined
      expect(moodleTeacher).toBeDefined();
      // Specific assertions for moodleTeacher properties
@@ -113,7 +115,7 @@ describe('getStudentList', () => {
 
  describe('getTeacherById', () => {
    it('should return a teacher object for Canvas', async () => {
-     const canvasTeacher = await main.getTeacherById('canvas', canvasCourseId, canvasToken, canvasTeacherId);
+     const canvasTeacher = await main.getTeacherById('canvas', canvasCourseId, canvasTeacherId);
      expect(canvasTeacher).toBeDefined();
      expect(canvasTeacher).toHaveProperty('TeacherID');
      expect(canvasTeacher).toHaveProperty('FullName');
@@ -122,7 +124,7 @@ describe('getStudentList', () => {
      expect(canvasTeacher).toHaveProperty('Email');
    });
    it('should return a teacher object for Moodle', async () => {
-     const moodleTeacher = await main.getTeacherById('moodle', moodleCourseId, moodleToken, moodleTeacherId);
+     const moodleTeacher = await main.getTeacherById('moodle', moodleCourseId, moodleTeacherId);
      // Check if moodleTeacher is defined
      expect(moodleTeacher).toBeDefined();
      // Specific assertions for moodleTeacher properties
@@ -137,7 +139,7 @@ describe('getStudentList', () => {
  
  describe('getAssignmentList', () => {
    it('should return a list of assignments for Canvas', async () => {
-     const canvasAssignmentList = await main.getAssignmentList('canvas', canvasToken, canvasCourseId);
+     const canvasAssignmentList = await main.getAssignmentList('canvas', canvasCourseId);
      expect(canvasAssignmentList).toBeDefined();
      expect(Array.isArray(canvasAssignmentList)).toBe(true);
      const firstAssignment = canvasAssignmentList[0];
@@ -148,7 +150,7 @@ describe('getStudentList', () => {
      expect(firstAssignment).toHaveProperty('Intro');
       });
    it.skip('should return a list of assignments for Moodle', async () => {
-     const moodleAssignmentList = await main.getAssignmentList('moodle', moodleToken, moodleCourseId);
+     const moodleAssignmentList = await main.getAssignmentList('moodle', moodleCourseId);
      expect(moodleAssignmentList).toBeDefined();
      expect(Array.isArray(moodleAssignmentList)).toBe(true);
      const firstAssignment = moodleAssignmentList[0];
@@ -161,7 +163,7 @@ describe('getStudentList', () => {
  });
  describe('getAssignmentById', () => {
    it('should return an assignment object for Canvas', async () => {
-     const canvasAssignment = await main.getAssignmentById('canvas', canvasToken, canvasCourseId, canvasAssignmentId);
+     const canvasAssignment = await main.getAssignmentById('canvas', canvasCourseId, canvasAssignmentId);
      expect(canvasAssignment).toHaveProperty('AssignmentID');
      expect(canvasAssignment).toHaveProperty('CourseID');
      expect(canvasAssignment).toHaveProperty('AssignmentName');
@@ -169,7 +171,7 @@ describe('getStudentList', () => {
      expect(canvasAssignment).toHaveProperty('Intro');
      });
    it('should return an assignment object for Moodle', async () => {
-     const moodleAssignment = await main.getAssignmentById('moodle', moodleCourseId, moodleToken, moodleAssignmentId);
+     const moodleAssignment = await main.getAssignmentById('moodle', moodleCourseId, moodleAssignmentId);
      expect(moodleAssignment).toBeDefined();
      expect(moodleAssignment).toHaveProperty('AssignmentID');
      expect(moodleAssignment).toHaveProperty('CourseID');
@@ -180,7 +182,7 @@ describe('getStudentList', () => {
  });
  describe('getRubricList', () => {
    it.skip('should return a list of rubrics for Canvas', async () => {
-     const canvasRubricList = await main.getRubricList('canvas', canvasToken, canvasCourseId);
+     const canvasRubricList = await main.getRubricList('canvas', canvasCourseId);
      expect(canvasRubricList).toBeDefined();
      expect(Array.isArray(canvasRubricList)).toBe(true);
      const firstRubric = canvasRubricList[0];
@@ -197,13 +199,13 @@ describe('getStudentList', () => {
      expect(firstRubric).toHaveProperty('hide_score_total');
    });
    it.skip('should return a list of rubrics for Moodle', async () => {
-     const moodleRubricList = await main.getRubricList('moodle', moodleToken, moodleCourseId);
+     const moodleRubricList = await main.getRubricList('moodle', moodleCourseId);
      expect(moodleRubricList).toBeDefined();
    });
  });
  describe('getRubricById', () => {
    it.skip('should return a rubric object for Canvas', async () => {
-     const canvasRubric = await main.getRubricById('canvas', canvasToken, canvasCourseId, canvasRubricId);
+     const canvasRubric = await main.getRubricById('canvas', canvasCourseId, canvasRubricId);
      expect(canvasRubric).toBeDefined();
      expect(canvasRubric).toHaveProperty('id');
      expect(canvasRubric).toHaveProperty('context_id');
@@ -218,13 +220,13 @@ describe('getStudentList', () => {
      expect(canvasRubric).toHaveProperty('hide_score_total');
    });
    it.skip('should return a rubric object for Moodle', async () => {
-     const moodleRubric = await main.getRubricById('moodle', moodleCourseId, moodleToken, moodleRubricId);
+     const moodleRubric = await main.getRubricById('moodle', moodleCourseId, moodleRubricId);
      expect(moodleRubric).toBeDefined();
    });
  });
  describe("getCourseList", () => {
    it('should return a course list object for Canvas', async () => {
-     const canvasCourseList = await main.getCourseList('canvas', canvasToken);
+     const canvasCourseList = await main.getCourseList('canvas');
      expect(Array.isArray(canvasCourseList)).toBe(true);
      const firstCourse = canvasCourseList[0];
      //console.log("CAfNVAS COURSE LIST" + JSON.stringify(canvasCourseList));
@@ -237,7 +239,7 @@ describe('getStudentList', () => {
      expect(firstCourse).toHaveProperty('CreatedAt');
    });
    it('should return a course object for Moodle', async () => {
-     const moodleCourseList = await main.getCourseList('moodle', moodleToken);
+     const moodleCourseList = await main.getCourseList('moodle');
      expect(Array.isArray(moodleCourseList)).toBe(true);
      const firstMoodle = moodleCourseList[0];
      //console.log("MOODLE COURSE LIST" + JSON.stringify(moodleCourseList));
@@ -252,7 +254,7 @@ describe('getStudentList', () => {
  });
  describe("getCourseById", () => {
    it('should return a course by id object for Canvas', async () => {
-     const canvasCourseList = await main.getCourseById('canvas', canvasToken, canvasCourseId);
+     const canvasCourseList = await main.getCourseById('canvas', canvasCourseId);
      //console.log("CANVAS COURSE LIST" + JSON.stringify(canvasCourseList));
      expect(canvasCourseList).toBeDefined();
      expect(canvasCourseList).toHaveProperty('CourseID');
@@ -263,7 +265,7 @@ describe('getStudentList', () => {
      expect(canvasCourseList).toHaveProperty('CreatedAt');
    });
    it('should return a course object for Moodle', async () => {
-     const moodleCourseList = await main.getCourseById('moodle', moodleToken, moodleCourseId);
+     const moodleCourseList = await main.getCourseById('moodle', moodleCourseId);
      //console.log("MOODLE COURSE LIST" + JSON.stringify(moodleCourseList));
      expect(moodleCourseList).toBeDefined();
      expect(moodleCourseList).toHaveProperty('CourseID');

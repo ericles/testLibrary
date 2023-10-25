@@ -4,14 +4,26 @@ import * as standardiser from "./standardiser";
 
 //check pipeline comment
 
+let canvasToken = ""; 
+let moodleToken = ""; 
 
-export async function getStudentList(lms: string, courseId: string, token: string = "") {
+// Function to set the canvas token
+export function setCanvasToken(token: string) {
+  canvasToken = token;
+}
+// Function to set the moodle token
+export function setMoodleToken(token: string) {
+  moodleToken = token;
+}
+
+
+export async function getStudentList(lms: string, courseId: string) {
   let data;
 
   switch (lms) {
     case 'canvas':
       try {
-        data = await canvas.getStudentList(token, courseId);
+        data = await canvas.getStudentList(canvasToken, courseId);
         // console.log("getStudentListCanvas", data);
       } catch (error) {
         console.error("Error in getStudentListCanvas:", error);
@@ -32,13 +44,13 @@ export async function getStudentList(lms: string, courseId: string, token: strin
   return standardiser.standardiseStudent(lms, data);
 }
 
-export async function getStudentById(lms: string, courseId: string, token: string, studentId: string) {
+export async function getStudentById(lms: string, courseId: string, studentId: string) {
   let data;
 
   switch (lms) {
     case 'canvas':
       try {
-        data = await canvas.getStudentById(token, courseId, studentId);
+        data = await canvas.getStudentById(canvasToken, courseId, studentId);
         // console.log("getStudentByIdCanvas", data);
       } catch (error) {
         console.error("Error in getStudentByIdCanvas:", error);
@@ -58,13 +70,13 @@ export async function getStudentById(lms: string, courseId: string, token: strin
   return standardiser.standardiseStudent(lms, data);
 }
 
-export async function getTeacherList(lms: string, courseId: string, token: string) {
+export async function getTeacherList(lms: string, courseId: string) {
   let data;
 
   switch (lms) {
     case 'canvas':
       try {
-        data = await canvas.getTeacherList(token, courseId);
+        data = await canvas.getTeacherList(canvasToken, courseId);
         // console.log("getTeacherListCanvas", data);
       } catch (error) {
         console.error("Error in getTeacherListCanvas:", error);
@@ -85,13 +97,13 @@ export async function getTeacherList(lms: string, courseId: string, token: strin
   return standardiser.standardiseTeacher(lms, data);
 }
 
-export async function getTeacherById(lms: string, courseId: string, token: string, teacherId: string) {
+export async function getTeacherById(lms: string, courseId: string, teacherId: string) {
   let data;
 
   switch (lms) {
     case 'canvas':
       try {
-        data = await canvas.getTeacherById(token, courseId, teacherId);
+        data = await canvas.getTeacherById(canvasToken, courseId, teacherId);
         // console.log("getTeacherByIdCanvas", data);
       } catch (error) {
         console.error("Error in getTeacherByIdCanvas:", error);
@@ -112,13 +124,13 @@ export async function getTeacherById(lms: string, courseId: string, token: strin
   return standardiser.standardiseTeacher(lms, data);
 }
 
-export async function getCourseList(lms: string, token: string) {
+export async function getCourseList(lms: string) {
   let data;
 
   switch (lms) {
     case 'canvas':
       try {
-        data = await canvas.getCourseList(token);
+        data = await canvas.getCourseList(canvasToken);
         //console.log("getCourseListCanvas", data);
       } catch (error) {
         console.error("Error in getCourseListCanvas:", error);
@@ -140,13 +152,13 @@ export async function getCourseList(lms: string, token: string) {
 }
 
 
-export async function getCourseById(lms: string, token: string, courseId: string) {
+export async function getCourseById(lms: string, courseId: string) {
   let data;
 
   switch (lms) {
     case 'canvas':
       try {
-        data = await canvas.getCourseById(token, courseId);
+        data = await canvas.getCourseById(canvasToken, courseId);
         // console.log("getCourseByIdCanvas", data);
       } catch (error) {
         console.error("Error in getCourseByIdCanvas:", error);
@@ -167,13 +179,13 @@ export async function getCourseById(lms: string, token: string, courseId: string
   return standardiser.standardiseCourse(lms, data);
 }
 
-export async function getAssignmentList(lms: string, token: string, courseId: string) {
+export async function getAssignmentList(lms: string, courseId: string) {
   let data;
 
   switch (lms) {
     case 'canvas':
       try {
-        data = await canvas.getAssignmentList(token, courseId);
+        data = await canvas.getAssignmentList(canvasToken, courseId);
         // console.log("getAssignmentListCanvas", data);
       } catch (error) {
         console.error("Error in getAssignmentListCanvas:", error);
@@ -194,13 +206,13 @@ export async function getAssignmentList(lms: string, token: string, courseId: st
   return standardiser.standardiseAssignment(lms, data);
 }
 
-export async function getAssignmentById(lms: string, token: string, courseId: string, assignmentId: string) {
+export async function getAssignmentById(lms: string, courseId: string, assignmentId: string) {
   let data;
 
   switch (lms) {
     case 'canvas':
       try {
-        data = await canvas.getAssignmentById(token, courseId, assignmentId);
+        data = await canvas.getAssignmentById(canvasToken, courseId, assignmentId);
         // console.log("getAssignmentByIdCanvas", data);
       } catch (error) {
         console.error("Error in getAssignmentByIdMoodle:", error);
@@ -221,13 +233,13 @@ export async function getAssignmentById(lms: string, token: string, courseId: st
   return standardiser.standardiseAssignment(lms, data);;
 }
 
-export async function getRubricList(lms: string, token: string, courseId: string) {
+export async function getRubricList(lms: string, courseId: string) {
   let data;
 
   switch (lms) {
     case 'canvas':
       try {
-        data = await canvas.getRubricList(token, courseId);
+        data = await canvas.getRubricList(canvasToken, courseId);
         // console.log("getRubricListCanvas", data);
       } catch (error) {
         console.error("Error in getRubricListCanvas:", error);
@@ -240,13 +252,13 @@ export async function getRubricList(lms: string, token: string, courseId: string
   return data;
 }
 
-export async function getRubricById(lms: string, token: string, courseId: string, rubricId: string) {
+export async function getRubricById(lms: string, courseId: string, rubricId: string) {
   let data;
 
   switch (lms) {
     case 'canvas':
       try {
-        data = await canvas.getRubricById(token, courseId, rubricId);
+        data = await canvas.getRubricById(canvasToken, courseId, rubricId);
         // console.log("getRubricByIdCanvas", data);
       } catch (error) {
         console.error("Error in getRubricByIdCanvas:", error);
